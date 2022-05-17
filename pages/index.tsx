@@ -4,19 +4,13 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
-  return (
-    <div>
-      <nav>
-        <div className={styles.navLinks}>
-          <a href="/about">about</a>
-          <a href="/projects">projects</a>
-          <a href="/writing">writing</a>
-          <a href="/art">art</a>
+    return (
+        <div>
+            <h1>Benjamin Allan-Rahill</h1>
+            <h1>Benjamin Allan-Rahill</h1>
+            <h1>Benjamin Allan-Rahill</h1>
         </div>
-      </nav>
-      <h1>Benjamin Allan-Rahill</h1>
-    </div>
-  )
+    )
 }
 
 export default Home
