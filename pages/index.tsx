@@ -6,6 +6,9 @@ import styles from '../styles/Home.module.css'
 const Home: NextPage = () => {
     return (
         <div className="main">
+            <div className="construction">
+                🚧 This page is currently under construction 🚧
+            </div>
             <h1>Benjamin Allan-Rahill</h1>
             <div className="nav">
                 <span> work </span>
