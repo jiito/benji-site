@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
@@ -11,22 +12,16 @@ const Home: NextPage = () => {
             </div>
             <h1>Benjamin Allan-Rahill</h1>
             <div className="nav">
-                <span> work </span>
-                <span> dev</span>
-                <span> writing</span>
-                <span> art</span>
-            </div>
+                <Link href="/work">
+                    <span> work </span>
+                </Link>
+                <Link href="https://github.com/jiito">
+                    <span> dev </span>
+                </Link>
 
-            <div>
-                <a href="https://crossmint.io">
-                    <h5> Crossmint </h5>
-                </a>
-                <span>The fastest way to buy NFTs</span>
-            </div>
-            <div>
-                <a href="https://pallet.com">
-                    <h5> Pallet </h5>
-                </a>
+                <Link href="https://words.benji.ar">
+                    <span> writing</span>
+                </Link>
             </div>
         </div>
     )
