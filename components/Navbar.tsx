@@ -2,11 +2,11 @@ export const NavBar = () => {
     return (
         <>
             <nav>
-                <div>
-                    <a href="/about">about</a>
-                    <a href="/projects">projects</a>
-                    <a href="/writing">writing</a>
-                    <a href="/art">art</a>
+                <div className="nav">
+                    <span> work </span>
+                    <span> dev</span>
+                    <span> writing</span>
+                    <span> art</span>
                 </div>
             </nav>
         </>
