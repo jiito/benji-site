@@ -3,19 +3,15 @@ import { Layout } from '../components/Layout'
 const WorkPage = () => {
     return (
         <Layout>
-            <div className="main">
-                <div className="construction">
-                    🚧 This page is currently under construction 🚧
-                </div>
-
-                <div>
-                    <h3>prev: </h3>
-                </div>
+            <div>
+                <h3>prev: </h3>
+            </div>
+            <div className="work-experience ">
                 <div>
                     <a href="https://crossmint.io">
                         <h5> Crossmint </h5>
                     </a>
-                    <span>The fastest way to buy NFTs</span>
+                    <span className="tagline">The fastest way to buy NFTs</span>
                     <ul>
                         <li>
                             <a href="https://github.com/Crossmint/solana-auth">
@@ -29,6 +25,9 @@ const WorkPage = () => {
                     <a href="https://pallet.com">
                         <h5> Pallet </h5>
                     </a>
+                    <span className="tagline">
+                        Unlocking Talent In Internet Communities
+                    </span>
                 </div>
             </div>
         </Layout>
