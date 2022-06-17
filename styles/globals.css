@@ -15,6 +15,11 @@ a {
     box-sizing: border-box;
 }
 
+.container {
+    margin: auto;
+    max-width: 500px;
+}
+
 .main {
     display: flex;
     flex-direction: column;
@@ -22,12 +27,17 @@ a {
     word-wrap: break-word;
 }
 
-.nav {
+nav {
     display: flex;
     font-size: 16px;
     justify-content: space-between;
-    text-decoration: underline;
     color: blue;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #f3f3f3;
+}
+
+nav span {
+    cursor: pointer;
 }
 
 .construction {
@@ -41,4 +51,17 @@ a {
     50% {
         background: white;
     }
+}
+
+.tagline {
+    font-style: italic;
+    display: inline-block;
+    font-size: 14px;
+}
+
+.work-experience h5 {
+    display: inline-block;
+    font-size: 16px;
+    margin-right: 8px;
+    margin-bottom: 12px;
 }
