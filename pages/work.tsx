@@ -3,9 +3,7 @@ import { Layout } from '../components/Layout'
 const WorkPage = () => {
     return (
         <Layout>
-            <div>
-                <h3>prev: </h3>
-            </div>
+            <h3>prev: </h3>
             <div className="work-experience ">
                 <div>
                     <a href="https://crossmint.io">
