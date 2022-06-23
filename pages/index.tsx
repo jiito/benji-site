@@ -3,9 +3,10 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
+import { Layout } from '../components/Layout'
 
 const Home: NextPage = () => {
-    return <h1>Benjamin Allan-Rahill</h1>
+    return <Layout></Layout>
 }
 
 export default Home
