@@ -7,8 +7,8 @@ export const Layout = ({ children }) => {
                 <div className="construction">
                     🚧 This page is currently under construction 🚧
                 </div>
-                <h1>jiito</h1>
                 <NavBar />
+                <h1>jiito</h1>
             </>
             <div className="main">{children}</div>
         </div>
