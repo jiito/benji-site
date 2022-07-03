@@ -1,6 +1,7 @@
-import { NavBar } from './NavBar'
+import { NavBar } from './Navbar'
+import React from 'react'
 
-export const Layout = ({ children }) => {
+export const Layout: React.FC = ({ children }) => {
     return (
         <div className="container">
             <>
