@@ -1,6 +1,5 @@
-type LSystemProps = {};
 
-const LSystem = (props: LSystemProps) => {
+const LSystem = (props: any) => {
   return <></>;
 };
 

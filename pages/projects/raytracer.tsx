@@ -1,16 +1,16 @@
 const RayTracerPage = () => {
     return (
-        <div class="container-fluid">
+        <div className="container-fluid">
             <h4>Project 3: Ray Tracer</h4>
             name: <i>Ben Allan-rahill</i>
-            <center>
+            <div>
                 <canvas width="600" height="400" id="canvas-raytracer"></canvas>
                 <br />
-                <select id="select-background" onchange="setBackground();">
+                <select id="select-background">
                     <option value="daylight">daylight</option>
                     <option value="white">white</option>
                 </select>
-                <select id="select-checkpoint" onchange="runCheckpoint();">
+                <select id="select-checkpoint">
                     <option value="1">checkpoint1</option>
                     <option value="2">checkpoint2</option>
                     <option value="3">checkpoint3</option>
@@ -18,16 +18,10 @@ const RayTracerPage = () => {
                     <option value="5">my scene</option>
                     <option value="6">truck</option>
                 </select>
-                <label for="spp">SPP </label>
-                <input
-                    id="spp"
-                    type="number"
-                    min="1"
-                    max="32"
-                    onchange="setSPP()"
-                />
+                <label htmlFor="spp">SPP </label>
+                <input id="spp" type="number" min="1" max="32" />
                 <br />
-            </center>
+            </div>
             <h4>Description</h4>
             <i>
                 Describe your ray tracer here. This will include a discussion of
