@@ -15,6 +15,17 @@ const Home: NextPage = () => {
             />
             <h3>Featured projects</h3>
             <ul>
+                <li>
+                    <a href="https://postroe.co">
+                        <span>PostRoe.co </span>
+                    </a>
+                    <p>
+                        Post Roe Co is providing visibility into corporations in
+                        a post roe society
+                    </p>
+                </li>
+                <p></p>
+
                 <li> Raytracer </li>
                 <li> MiddVentures Club </li>
             </ul>
