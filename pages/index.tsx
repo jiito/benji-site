@@ -1,9 +1,7 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import Link from 'next/link'
-import styles from '../styles/Home.module.css'
 import { Layout } from '../components/Layout'
+import Project from '../components/Project'
+import { projects } from '../data/projects'
 
 const Home: NextPage = () => {
     return (
@@ -13,21 +11,13 @@ const Home: NextPage = () => {
                 height="100px"
                 style={{ objectFit: 'cover' }}
             />
-            <h3>Featured projects</h3>
+            <h3>🏔 Expeditions</h3>
             <ul>
-                <li>
-                    <a href="https://postroe.co">
-                        <span>PostRoe.co </span>
-                    </a>
-                    <p>
-                        Post Roe Co is providing visibility into corporations in
-                        a post roe society
-                    </p>
-                </li>
-                <p></p>
-
-                <li> Raytracer </li>
-                <li> MiddVentures Club </li>
+                {projects.map((project) => (
+                    <li>
+                        <Project project={project} />
+                    </li>
+                ))}
             </ul>
         </Layout>
     )
