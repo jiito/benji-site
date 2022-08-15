@@ -1,5 +1,5 @@
 const v0Page = () => {
-    return <></>
-}
+  return <></>;
+};
 
-export default v0Page
+export default v0Page;
