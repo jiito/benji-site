@@ -32,7 +32,7 @@ export const projects: Array<Project> = [
   },
   {
     name: "Solana Auth",
-    description: "Sign into any solana dApp with your wallet!",
+    description: "Open source authentication package for Solana wallets",
     href: "https://github.com/crossmint/solana-auth",
     featured: true,
     toolsUsed: ["Next.js", "Solana Wallet Adapter", "Lerna"],
