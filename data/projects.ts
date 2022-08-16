@@ -16,6 +16,14 @@ export const projects: Array<Project> = [
     toolsUsed: ["Notion", "Super.so"],
   },
   {
+    name: "Javscript Ray Tracer",
+    description:
+      "Basic raytracer with boundinvg-volume hierarchy ",
+    href: "https://jiito.github.io/raytracer-js/",
+    featured: true,
+    toolsUsed: ["Javacript", "gl-matrix"],
+  },
+  {
     name: "gci",
     description: "Git Checkout Interactive Rust command line tool",
     href: "https://github.com/jiito/gci",
@@ -24,7 +32,7 @@ export const projects: Array<Project> = [
   },
   {
     name: "Solana Auth",
-    description: "Sign",
+    description: "Sign into any solana dApp with your wallet!",
     href: "https://github.com/crossmint/solana-auth",
     featured: true,
     toolsUsed: ["Next.js", "Solana Wallet Adapter", "Lerna"],
