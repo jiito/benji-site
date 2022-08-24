@@ -16,12 +16,12 @@ export const projects: Array<Project> = [
     toolsUsed: ["Notion", "Super.so"],
   },
   {
-    name: "Javscript Ray Tracer",
+    name: "Javascript Ray Tracer",
     description:
       "Basic raytracer with boundinvg-volume hierarchy ",
     href: "https://jiito.github.io/raytracer-js/",
     featured: true,
-    toolsUsed: ["Javacript", "gl-matrix"],
+    toolsUsed: ["Javascript", "gl-matrix"],
   },
   {
     name: "gci",
