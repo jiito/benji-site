@@ -24,7 +24,11 @@ const ProjectItem = ({ project }: ProjectProps) => {
 export default ProjectItem;
 
 const ProjectContainer = styled.div`
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  background: #f3f3f3;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 1px solid #e9e9e9;
 `;
 
 const ProjectLink = styled.a`
@@ -36,14 +40,13 @@ const Description = styled.p`
 `;
 
 const Gear = styled.span`
-  font-style: bold;
-  margin-top: 2px;
   font-style: italic;
-  margin-bottom: 4px;
+  margin-right: 4px;
 `;
 
 const ToolsUsedContainer = styled.div`
   margin-top: 0;
   display: flex;
   flex-direction: row;
+  align-items: center;
 `;
