@@ -12,12 +12,13 @@ const Home: NextPage = () => {
         height="100px"
         style={{ objectFit: "cover" }}
       />
-      <h3>🏔 Expeditions</h3>
+      <h3>Expeditions</h3>
       <p>
-        I like to imagine myself as an explorer who is slowly but intently
-        charting a new world. Much of my life has thus far included various
-        expeditions or forrays into different fields.
+        I imagine myself as an explorer who is slowly but intently charting a
+        new world. Much of my life has thus far included various expeditions or
+        forrays into different fields.{" "}
       </p>
+      <p>Here are a few of the stops I have made along the way:</p>
       <ExpeditionList>
         {projects.map((project) => (
           <li>
