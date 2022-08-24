@@ -7,10 +7,6 @@ export const Layout: React.FC = ({ children }) => {
     return (
         <PageContainer>
             <>
-                {/*
-        <div className="construction">
-          🚧 This page is currently under construction 🚧
-        </div>*/}
                 <NavBar />
                 <h1>jiito</h1>
             </>
