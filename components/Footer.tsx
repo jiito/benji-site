@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Link from "next/link";
 
 const SOCIAL_LINKS = [
   {
@@ -13,22 +14,27 @@ const SOCIAL_LINKS = [
 
 const Footer = () => {
   return (
-    <>
+    <Container>
       <Break />
       <CenteredDiv>
         <p>Built by Benji using Next.js, © 2022</p>
         <SocialLinks>
           {SOCIAL_LINKS.map((s) => (
-            <div>
-              <a href={s.href}>{s.name}</a>
-            </div>
+            <Link href={s.href} passHref>
+              <SocialLinkItem>{s.name}</SocialLinkItem>
+            </Link>
           ))}
         </SocialLinks>
       </CenteredDiv>
-    </>
+    </Container>
   );
 };
 export default Footer;
+
+const Container = styled.div`
+  margin-top: 40px;
+  color: gray;
+`;
 
 const Break = styled.hr`
   color: gray;
@@ -45,5 +51,11 @@ const CenteredDiv = styled.div`
 
 const SocialLinks = styled.div`
   display: flex;
+  width: 100%;
   flex-direction: row;
+  justify-content: center;
+`;
+
+const SocialLinkItem = styled.a`
+  margin-right: 8px;
 `;
