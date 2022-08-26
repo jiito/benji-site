@@ -4,16 +4,16 @@ import Footer from "./Footer";
 import styled from "styled-components";
 
 export const Layout: React.FC = ({ children }) => {
-    return (
-        <PageContainer>
-            <>
-                <NavBar />
-                <h1>jiito</h1>
-            </>
-            <div className="main">{children}</div>
-            <Footer />
-        </PageContainer>
-    );
+  return (
+    <PageContainer>
+      <>
+        <NavBar />
+        <h1>jiito</h1>
+      </>
+      <div className="main">{children}</div>
+      <Footer />
+    </PageContainer>
+  );
 };
 
 const PageContainer = styled.div`
