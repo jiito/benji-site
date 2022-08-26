@@ -1,39 +1,45 @@
 import styled from "styled-components";
+import Link from "next/link";
 
-const SOCIAL_LINKS = [{
+const SOCIAL_LINKS = [
+  {
     name: "twitter",
-    href: "https://twitter.com/beeejar"
-}
-    , {
+    href: "https://twitter.com/beeejar",
+  },
+  {
     name: "github",
-    href: "https://github.com/jiito"
-}
-]
+    href: "https://github.com/jiito",
+  },
+];
 
 const Footer = () => {
-    return (
-        <>
-            <Break />
-            <CenteredDiv>
-                <p>
-                    Built by Benji using Next.js, © 2022
-                </p>
-                <SocialLinks
-                >
-                    {SOCIAL_LINKS.map((s) => (
-                        <div><a href={s.href}>{s.name}</a></div>
-                    ))}
-                </SocialLinks>
-            </CenteredDiv>
-        </>
-    );
+  return (
+    <Container>
+      <Break />
+      <CenteredDiv>
+        <p>Built by Benji using Next.js, © 2022</p>
+        <SocialLinks>
+          {SOCIAL_LINKS.map((s) => (
+            <Link href={s.href} passHref>
+              <SocialLinkItem>{s.name}</SocialLinkItem>
+            </Link>
+          ))}
+        </SocialLinks>
+      </CenteredDiv>
+    </Container>
+  );
 };
 export default Footer;
+
+const Container = styled.div`
+  margin-top: 40px;
+  color: gray;
+`;
 
 const Break = styled.hr`
   color: gray;
   width: 25%;
-`
+`;
 
 const CenteredDiv = styled.div`
   margin: auto;
@@ -41,9 +47,15 @@ const CenteredDiv = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-`
+`;
 
 const SocialLinks = styled.div`
-  display:flex;
+  display: flex;
+  width: 100%;
   flex-direction: row;
-`
+  justify-content: center;
+`;
+
+const SocialLinkItem = styled.a`
+  margin-right: 8px;
+`;
