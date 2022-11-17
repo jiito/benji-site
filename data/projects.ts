@@ -5,7 +5,6 @@ export interface Project {
   featured: boolean;
   toolsUsed: String[];
 }
-
 export const projects: Array<Project> = [
   {
     name: "Post Roe Co",
@@ -17,8 +16,7 @@ export const projects: Array<Project> = [
   },
   {
     name: "Javascript Ray Tracer",
-    description:
-      "Basic raytracer with boundinvg-volume hierarchy ",
+    description: "Basic raytracer with boundinvg-volume hierarchy ",
     href: "https://jiito.github.io/raytracer-js/",
     featured: true,
     toolsUsed: ["Javascript", "gl-matrix"],
