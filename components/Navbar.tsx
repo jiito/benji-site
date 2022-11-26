@@ -13,10 +13,6 @@ const NAVLINKS = [
     name: "dev",
     link: "https://github.com/jiito",
   },
-  {
-    name: "writing",
-    link: "https://words.benji.ar/",
-  },
 ];
 
 export const NavBar = () => {
