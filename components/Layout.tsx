@@ -1,4 +1,5 @@
 import { NavBar } from "./Navbar";
+import Link from "next/link";
 import React from "react";
 import Footer from "./Footer";
 import styled from "styled-components";
@@ -8,13 +9,23 @@ export const Layout: React.FC = ({ children }) => {
     <PageContainer>
       <>
         <NavBar />
-        <h1>jiito</h1>
+        <HomeLink>
+          <Link href={"/"}>
+            <h1>jiito</h1>
+          </Link>
+        </HomeLink>
       </>
       <div className="main">{children}</div>
       <Footer />
     </PageContainer>
   );
 };
+
+const HomeLink = styled.div`
+  :hover {
+    cursor: pointer;
+  }
+`;
 
 const PageContainer = styled.div`
   margin: auto;

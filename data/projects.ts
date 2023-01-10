@@ -7,6 +7,13 @@ export interface Project {
 }
 export const projects: Array<Project> = [
   {
+    name: "aspn",
+    description: "Distributed network for hosting microservices",
+    href: "/aspn",
+    featured: true,
+    toolsUsed: ["Rust", "GCP", "PostgresQL", "WebAssembly"],
+  },
+  {
     name: "Post Roe Co",
     description:
       "Post Roe Co is providing visibility into corporations a post roe society",

@@ -1,14 +1,14 @@
 import type { NextPage } from "next";
 import styled from "styled-components";
+import { BannerImage } from "../components/BannerImage";
 import { Layout } from "../components/Layout";
 import Project from "../components/Project";
 import { projects } from "../data/projects";
-import Image from "next/image";
 
 const Home: NextPage = () => {
   return (
     <Layout>
-      <BannerImage src="/blue_balls.png" height={100} width={500} />
+      <BannerImage src="/blue_spheres.png" height={1200 / 2} width={1800} />
       <h3>Expeditions</h3>
       <p>
         I imagine myself as an explorer who is slowly but intently charting a
@@ -34,9 +34,4 @@ const ExpeditionList = styled.ul`
   padding: 0;
   text-decoration: none;
   list-style: none;
-`;
-
-const BannerImage = styled(Image)`
-  object-fit: cover;
-  border-radius: 5px;
 `;
