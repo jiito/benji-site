@@ -22,6 +22,7 @@ export default function Document() {
           }}
         />
       </Head>
+      <title>jiito</title>
       <body>
         <Main />
         <NextScript />
