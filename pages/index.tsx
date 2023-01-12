@@ -17,11 +17,15 @@ const Home: NextPage = () => {
       </p>
       <p>Here are a few of the stops I have made along the way:</p>
       <ExpeditionList>
-        {projects.map((project) => (
-          <li>
-            <Project project={project} />
-          </li>
-        ))}
+        {projects.map((project) => {
+          return (
+            project.featured && (
+              <li>
+                <Project project={project} />
+              </li>
+            )
+          );
+        })}
       </ExpeditionList>
     </Layout>
   );
