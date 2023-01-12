@@ -7,6 +7,13 @@ export interface Project {
 }
 export const projects: Array<Project> = [
   {
+    name: "ChadGPT",
+    description: "Your AI frat bro",
+    href: "https://chadgpt.app",
+    featured: false,
+    toolsUsed: ["Twillio", "NextJS", "OpenAI"],
+  },
+  {
     name: "aspn",
     description: "Distributed network for hosting microservices",
     href: "/aspn",
@@ -23,7 +30,7 @@ export const projects: Array<Project> = [
   },
   {
     name: "Javascript Ray Tracer",
-    description: "Basic raytracer with boundinvg-volume hierarchy ",
+    description: "Basic raytracer with bounding-volume hierarchy ",
     href: "https://jiito.github.io/raytracer-js/",
     featured: true,
     toolsUsed: ["Javascript", "gl-matrix"],

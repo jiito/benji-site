@@ -40,8 +40,8 @@ const Description = styled.p`
 `;
 
 const Gear = styled.span`
-  font-style: italic;
   margin-right: 4px;
+  font-style: normal;
 `;
 
 const ToolsUsedContainer = styled.div`
@@ -49,4 +49,6 @@ const ToolsUsedContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  font-style: italic;
+  color: grey;
 `;
