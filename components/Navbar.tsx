@@ -6,8 +6,8 @@ const NAVLINKS = [
     link: "/work",
   },
   {
-    name: "art",
-    link: "/art",
+    name: "words",
+    link: "https://bjar.substack.com",
   },
   {
     name: "dev",
