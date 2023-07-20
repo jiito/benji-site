@@ -21,6 +21,16 @@ export default function Document() {
           `,
           }}
         />
+        <meta property="og:title" content="Ben Allan-Rahill (jiito)" />
+        <meta
+          property="og:image"
+          content="https://www.benji.ar/_next/image?url=%2Fblue_spheres.png&w=3840&q=75"
+        />
+        <meta property="og:url" content="https://benji.ar" />
+        <meta
+          name="twitter:card"
+          content="https://www.benji.ar/_next/image?url=%2Fblue_spheres.png&w=3840&q=75"
+        />
       </Head>
       <title>jiito</title>
       <body>
