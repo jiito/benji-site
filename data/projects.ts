@@ -24,7 +24,7 @@ export const projects: Array<Project> = [
     name: "Post Roe Co",
     description:
       "Post Roe Co is providing visibility into corporations a post roe society",
-    href: "https://postroe.co",
+    href: "https://post-roe.super.site/",
     featured: true,
     toolsUsed: ["Notion", "Super.so"],
   },
