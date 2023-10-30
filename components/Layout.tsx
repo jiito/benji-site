@@ -11,7 +11,7 @@ export const Layout: React.FC = ({ children }) => {
         <NavBar />
         <HomeLink>
           <Link href={"/"}>
-            <h1>jiito</h1>
+            <h1>Ben Allan-Rahill</h1>
           </Link>
         </HomeLink>
       </>
