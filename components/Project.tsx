@@ -13,10 +13,7 @@ const ProjectItem = ({ project }: ProjectProps) => {
         <ProjectLink>{project.name}</ProjectLink>
       </Link>
       <Description>{project.description}</Description>
-      <ToolsUsedContainer>
-        {" "}
-        <Gear>Gear Used:</Gear> {project.toolsUsed.join(", ")}
-      </ToolsUsedContainer>
+      <ToolsUsedContainer>{project.toolsUsed.join(", ")}</ToolsUsedContainer>
     </ProjectContainer>
   );
 };
