@@ -3,9 +3,41 @@ export interface Project {
   description: string;
   href: string;
   featured: boolean;
-  toolsUsed: String[];
+  toolsUsed: string[];
 }
 export const projects: Array<Project> = [
+  {
+    name: "Particle Text",
+    description: "Animated text using vertex shaders",
+    href: "https://particle-text-beta.vercel.app/",
+    featured: true,
+    toolsUsed: ["@react-three/fiber", "Typescript"],
+  },
+  {
+    name: "AirBnb Infinite Scroll",
+    description: "Infinite scroll clone of AirBnb using plain HTML/CSS/JS",
+    href: "https://scroll-tawny.vercel.app/",
+    featured: false,
+    toolsUsed: ["Unsplash API", "React"],
+  },
+  {
+    name: "eddy",
+    description:
+      "Semantic real-time mind mapping. Best NLP hack at Stanford Treehacks 2023",
+    href: "https://devpost.com/software/eddy-zx9uto",
+    featured: true,
+    toolsUsed: [
+      "chakra-ui",
+      "fastapi",
+      "figma",
+      "huggingface",
+      "nltk",
+      "openai",
+      "python",
+      "react",
+      "react-flow",
+    ],
+  },
   {
     name: "ChadGPT",
     description: "Your AI frat bro",
