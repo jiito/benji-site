@@ -14,6 +14,7 @@ export const Layout: React.FC = ({ children }) => {
             <h1>Ben Allan-Rahill</h1>
           </Link>
         </HomeLink>
+        <Email>benjamin [dot] allanrahill [at] gmail</Email>
       </>
       <div className="main">{children}</div>
       <Footer />
@@ -21,10 +22,18 @@ export const Layout: React.FC = ({ children }) => {
   );
 };
 
+const Email = styled.p`
+  font-style: italic;
+  font-size: 14px;
+  font-weight: 400;
+  color: #7c7c7c;
+`;
+
 const HomeLink = styled.div`
   :hover {
     cursor: pointer;
   }
+  margin-bottom: -1.5rem;
 `;
 
 const PageContainer = styled.div`

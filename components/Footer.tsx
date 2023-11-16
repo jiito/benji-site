@@ -17,7 +17,6 @@ const Footer = () => {
     <Container>
       <Break />
       <CenteredDiv>
-        <p>Built by Benji using Next.js, © 2022</p>
         <SocialLinks>
           {SOCIAL_LINKS.map((s) => (
             <Link href={s.href} passHref>
@@ -25,6 +24,7 @@ const Footer = () => {
             </Link>
           ))}
         </SocialLinks>
+        <p>built by benji ar © 2023</p>
       </CenteredDiv>
     </Container>
   );
