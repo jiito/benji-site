@@ -16,7 +16,7 @@ export const projects: Array<Project> = [
   {
     name: "TRANSFORMING OUR DNA — GENOTYPING STRUCTURAL VARIANTS USING VISION TRANSFORMERSt",
     description: "Animated text using vertex shaders",
-    href: "/theis.pdf",
+    href: "/thesis.pdf",
     featured: true,
     toolsUsed: ["Python", "Vision Transformers"],
   },
