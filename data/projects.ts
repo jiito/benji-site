@@ -14,6 +14,13 @@ export const projects: Array<Project> = [
     toolsUsed: ["@react-three/fiber", "Typescript"],
   },
   {
+    name: "TRANSFORMING OUR DNA — GENOTYPING STRUCTURAL VARIANTS USING VISION TRANSFORMERSt",
+    description: "Animated text using vertex shaders",
+    href: "/theis.pdf",
+    featured: true,
+    toolsUsed: ["Python", "Vision Transformers"],
+  },
+  {
     name: "AirBnb Infinite Scroll",
     description: "Infinite scroll clone of AirBnb using plain HTML/CSS/JS",
     href: "https://scroll-tawny.vercel.app/",
