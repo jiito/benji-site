@@ -14,8 +14,8 @@ export const projects: Array<Project> = [
     toolsUsed: ["@react-three/fiber", "Typescript"],
   },
   {
-    name: "TRANSFORMING OUR DNA — GENOTYPING STRUCTURAL VARIANTS USING VISION TRANSFORMERSt",
-    description: "Animated text using vertex shaders",
+    name: "Transforming Our DNA - Genotyping Structural Variants Using Vision Transformers (ViT)",
+    description: "Undergraduate Computer Science Thesis",
     href: "/thesis.pdf",
     featured: true,
     toolsUsed: ["Python", "Vision Transformers"],
