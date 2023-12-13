@@ -1,0 +1,81 @@
+#+title: On The Internet
+
+
+* Current state of the internet
+
+
+* First princliples
+
+We interact with the internet as a way to manipulate data.
+We use software as an interface to perform these actions
+
+Data is stored most often in the cloud.
+
+Computing is getting faster and data storage more efficient.
+
+People have personal computers but don't do more than
+
+
+Imagine this future where we can generate a UI on demand given any request. Instead of a text response back from a model, the result is a usable user interface. every element is generate from a source of truth.
+
+you could generate full web educational expereinces, software products that help users manage their bank accounts.
+
+Essentially, we are building a general abstraction that takes a users request and builds the interface.
+
+* a demonstrative example
+
+Let's think about a large portion of the user base of laptops: students. Currently, many students interact with their computers soley to access the google or microsoft suite of tools. They only ever use a web browser to open up a set of tabs where they write their assignments.
+
+insteaf of always interacting with the interface that google has designed, we can build interfaces for these on demand.
+
+We could start with a description of the wrok involved: "Im working on this Math assigment [PDF upload]"
+
+The AI then spins up an interface that pulls up relevant math videos, opens the assignment, and gives them place to do scratch work on demand.
+
+This workspace is analogous to a tab in a current sense: more ephemeral to a browser session.
+
+
+* ideas
+
+
+User interfaces can be kept track of an iterated on, they are only code and could be hashed in a way that allows them to be stored and accessed.
+
+
+One crazy thing is that there wouldn't be a concept of webpages anymore, you could "for free" aggregate data from across the web.
+- the prototype of this looks like adding datascources to my personal website from Github, instagram, etc.
+
+  You could build a price comparison UI in seconds without needing a tool to do so
+
+
+Arc is getting close to this, by remmebring what tabs have been open,
+
+sharing comes for free
+
+
+could build a fleshed out version of this with bespoke data pipelines and also
+
+
+Problems:
+- there needs to be a way to manage views that are recreated
+- There still needs to be a location system that houses certain entities
+    Maybe not with all of the organization of structure that AI's can do
+
+* design
+
+There are few limitations for the intial design. This approach has to be fitted to the current internet
+
+
+* initial test
+
+
+* Questions:
+1. What are the limiting factors?
+   1. memory?
+   2. Compute?
+2. What are the comodities?
+   1. They used to be software and websites
+   2. Are they going to be AI's that produce better UIs? AIs that are faster? more personalized?
+3. Compiler??
+   1. Gauruntee correctness
+4. What sort of interactions are going to be maintained when AI can automate more menial tasks? writing, calculating, ...
+   - the intial seed a query direction is going to be important.

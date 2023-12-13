@@ -1,0 +1,58 @@
+#+title: 120723
+
+* Relection
+I'll save you the sleepy boredom of reading another attempt to rebrand common cliches as novel. I detest writing like a mindfulness guru, repeating self-help mantras and pithy slogans. Maybe it's helpful to write them down and continue to, like Harry Potter writing for Umbridge, sear them into my [brain]. Suffice to say, the last couple of weeks have been great mentally. I know these cliches, but lack in their application.
+
+My new schedule has allowed for balance: I am reducing my volume on the bike; I am making progress with my personal projects; I am spending time with friends and I can pay rent (so far!).
+
+Balance is active. It's not a default state--something we slip into with complacency or inaction--it requires input, adjusting. Thus, it can cause stress or strain on the body. Detecting this strain as a powerful product nd signal of balance--like feeling sore after weightliftinghas been helping me.
+
+# Balance has been the theme lately. I have been
+
+# my balance might be different
+
+# balance is an active thing
+
+# I have been in counseling the
+
+# Reading the Elon Musk biography, I have been thinking a lot more about balance, hard work, and drive.
+
+# Musk's drive to work on problems that he is excited about is inspiring. The way that this harms his relationships...
+
+# I have felt slightly unbridled by external needs. I feel that I can just continue on my path and that is admirable and also
+
+# There is no correct path
+
+# I often feel when writing these reflections that I am just regurgitating cliches.
+
+# I've written before about these revolving cliches.
+
+
+* Projects Update
+On top of contracting work for a few startups, I have blocked time each day to work on projects that are exciting to me. I have dubbed this block in my calendar "Future Proofing" and so, I am treating these projects as a medium to learn new skills, improve my strengths, and continue to build useful products.
+
+The passion to work on these comes from the beleif that everything is changeable, fixable, or has the potential to improve. Want a way to keep track of your workouts in the gym? Build it. How about an inventory of all the food you have and recipe suggestions? Build it.
+
+Yes, it's almost certain that these products have been built. I mean, when's the last time you had an original thought? My passion here is not to build solely novel products or only viable businesses. I'll get there eventually, but these projects are a way for me to continue to learn, stretch myself. They're a practice.
+
+I have a massive list of everything I want to learn, if that's of interest to anyone, I'd be happy to send over. Eventually, I would love to get a more substantial group of learners.
+
+I've been thinking a lot about this "custom software" paradigm. I beleive it's unfair that I know how to code and thus can utilize my computer for it's true purpose, computation. It's unbelievable to me that most students and professionals use their computers to access cloud-based software. I can't think of a perfect analogy, but this paradigm is like buying an incredibly nice road bike and only riding it on an indoor trainer.
+
+More on this to come (hopefully) next week.
+
+Since I last wrote:
+- Deep Learning
+  I began reading the book Deep Leanring
+- Particle Text
+  - Built a fun scroll animation here: https://particle-text-beta.vercel.app/, you can change the text rendered to anything under 5 characters.
+- generative UI
+  - given a user question, take data and render a live website that is conducive to answering the question
+  - progress:
+    I have set up a test website dev.benji.ar where you can has a question and wait for the AI to product and interface. This interface is not yet populated by any data source and much of the design is rudimentary.
+  - I have started to build a basic ability to populate the interface with data. The contrive test I am building is the ability to display data about the projects listed on my personal website.
+
+* What to write about?
+I'm a little unsure what to write about. As of late, the Reflection section has become repetetive and soured. I am thinking of tailoring this more to the projects section where I use it as a feedback and accountability mechanism for this section of my day. What do you think? Should I write on particular topics? Just more life updates?
+
+Please chime in! I miss hearing from many of you and enjoy your input/advice.

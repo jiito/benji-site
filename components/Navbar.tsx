@@ -7,7 +7,7 @@ const NAVLINKS = [
   },
   {
     name: "words",
-    link: "https://bjar.substack.com",
+    link: "/words",
   },
   {
     name: "dev",
