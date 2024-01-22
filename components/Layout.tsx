@@ -14,7 +14,9 @@ export const Layout: React.FC = ({ children }) => {
             <h1>Ben Allan-Rahill</h1>
           </Link>
         </HomeLink>
-        <Email>benjamin [dot] allanrahill [at] gmail</Email>
+        <Email>
+          ben [at] [<i>this domain</i>]
+        </Email>
       </>
       <div className="main">{children}</div>
       <Footer />
