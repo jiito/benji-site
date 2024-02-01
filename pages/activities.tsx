@@ -1,8 +1,9 @@
 import Image from "next/image";
 import { Layout } from "../components/Layout";
 import styled from "styled-components";
-import { useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { DayTracker } from "../utils/DayTracker";
+import { subDays } from "date-fns";
 
 const INDEX_TO_DAY: Record<number, string> = {
   0: "Mon",
@@ -15,23 +16,24 @@ const INDEX_TO_DAY: Record<number, string> = {
 };
 
 // TODO: move this to a singleton
-const dayTracker = new DayTracker(3, 3);
+const dayTracker = new DayTracker(0, 3);
 
-const ArtPage = () => {
+const ActivitiesPage = () => {
   const dates = dayTracker.dates;
+  const [loading, setLoading] = useState(true);
+
+  useLayoutEffect(() => {
+    dayTracker.transformDaysToActivities(subDays(new Date(), 90)).then(() => {
+      setLoading(false);
+    });
+  }, []);
 
   const normalizeIndex = (weekIndex: number, dayIndex: number) => {
     return weekIndex;
   };
 
-  const getColorForDay = (weekIndex: number, dayIndex: number) => {
-    const index = normalizeIndex(weekIndex, dayIndex);
-    const baseColor = (index * 123456789) % 255;
-    const color = `rgb(${baseColor}, ${baseColor % 100}, ${baseColor % 50})`;
-    return color;
-  };
-
   const TableRows = () => {
+    dayTracker.transformDaysToActivities(subDays(new Date(), 12));
     const rows: JSX.Element[][] = Array.from({ length: 7 }, (_, i) => [
       <RowTagContainer key={`day-${i}`}>
         <RowTag>{INDEX_TO_DAY[i]}</RowTag>
@@ -64,23 +66,26 @@ const ArtPage = () => {
       <div>
         <div>
           {/* ACTIVITY TRACKER */}
-          <h4>Activity Tracker</h4>
-          <p>I bike a lot</p>
-          <table>
-            <tbody>
-              <TableRows />
-            </tbody>
-          </table>
+          <h4>Biking Tracker</h4>
+          {loading ? (
+            <p>Loading...</p>
+          ) : (
+            <table>
+              <tbody>
+                <TableRows />
+              </tbody>
+            </table>
+          )}
         </div>
       </div>
     </Layout>
   );
 };
-export default ArtPage;
+export default ActivitiesPage;
 
 const DayDot = styled.div`
-  height: 10px;
-  width: 10px;
+  height: 20px;
+  width: 20px;
   border-radius: 2px;
   background-color: ${(props) => props.color};
 `;

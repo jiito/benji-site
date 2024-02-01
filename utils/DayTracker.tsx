@@ -1,14 +1,18 @@
 import {
   isToday,
+  isSameDay,
   addDays,
   addMonths,
   subMonths,
   nextMonday,
   differenceInCalendarDays,
+  isEqual,
 } from "date-fns";
+import { StravaAdapter } from "./StravaAdapter";
 
 export class DayTracker {
   dates: Date[] = [];
+  activities: any[] = [];
 
   constructor(monthsAfter: number, monthsBefore: number) {
     this.dates = this.createDateArray(monthsAfter, monthsBefore);
@@ -18,6 +22,7 @@ export class DayTracker {
     // create a day array for the current month
     const date = new Date();
     const startDate = nextMonday(subMonths(date, monthsBefore));
+    console.log("START DATE", startDate);
     const lastDate = addMonths(date, monthsAfter);
     const numberOfDaysToMake = differenceInCalendarDays(lastDate, startDate);
     const days = [];
@@ -30,16 +35,38 @@ export class DayTracker {
   }
 
   getDayColor(day: Date) {
-    // render a special color if today
+    console.log(day);
+    console.log("ACTIVITIES", this.activities);
+    this.activities.forEach((a) => {
+      console.log(a.start_date);
+      if (isSameDay(a.start_date, day)) {
+        console.log("found");
+      }
+    });
+    // if there is an activity on this day, return a color
+    const activity = this.activities.find((a) => {
+      // see if the current date is the same as the activity date
+      return isSameDay(a.start_date, day);
+    });
+
     if (isToday(day)) {
-      return "rgb(255, 162, 0)";
+      return "green";
+    } else if (activity) {
+      return "blue";
+    } else {
+      return "gray";
     }
-    return "rgb(135, 135, 135)";
   }
 
-  private getClosestMonday(date: Date) {
-    const day = date.getDay();
-    const diff = date.getDate() - day + (day == 0 ? -6 : 1);
-    return new Date(date.setDate(diff));
+  async transformDaysToActivities(startDate: Date) {
+    this.activities = await StravaAdapter.getStravaData(startDate);
+
+    this.activities = this.activities.map((a: any) => {
+      return {
+        ...a,
+        start_date: new Date(a.start_date),
+      };
+    });
+    console.log(this.activities);
   }
 }
