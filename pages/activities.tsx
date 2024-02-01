@@ -2,11 +2,17 @@ import Image from "next/image";
 import { Layout } from "../components/Layout";
 import styled from "styled-components";
 import { useState } from "react";
+import { DayTracker } from "../utils/DayTracker";
+
+// TODO: move this to a singleton
+const dayTracker = new DayTracker();
+
 const ArtPage = () => {
-  const [days, setDays] = useState(new Array(52 * 7).fill(0));
+  const CURRENT_YEAR = new Date().getFullYear();
+  const dates = dayTracker.dates;
 
   const normalizeIndex = (weekIndex: number, dayIndex: number) => {
-    return dayIndex;
+    return weekIndex;
   };
 
   const getColorForDay = (weekIndex: number, dayIndex: number) => {
@@ -17,20 +23,31 @@ const ArtPage = () => {
   };
 
   const TableRows = () => {
-    const rows: JSX.Element[] = [];
-    for (let i = 0; i < 7; i++) {
-      const row = days.slice(i * 52, i * 52 + 52);
-      rows.push(
-        <tr>
-          {row.map((d, dayIndex) => (
-            <td>
-              <DayDot color={getColorForDay(i, dayIndex)} />
-            </td>
-          ))}
-        </tr>
+    const rows: JSX.Element[][] = Array.from({ length: 7 }, () => []);
+
+    for (let i = 0; i < dates.length; i++) {
+      const date = dates[i];
+      const weekIndex = Math.floor(i / 7);
+      const dayIndex = i % 7;
+      console.log(weekIndex, dayIndex);
+      const color = dayTracker.getDayColor(date);
+
+      rows[dayIndex].push(
+        <td key={i}>
+          <DayDot color={color} />
+        </td>
       );
+      console.log("rows", rows);
+      console.log("rows.len", rows.length);
     }
-    return <>{rows}</>;
+
+    return (
+      <>
+        {rows.map((r) => (
+          <tr>{r}</tr>
+        ))}
+      </>
+    );
   };
   return (
     <Layout>
