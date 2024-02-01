@@ -1,20 +1,29 @@
+import {
+  isToday,
+  addDays,
+  addMonths,
+  subMonths,
+  nextMonday,
+  differenceInCalendarDays,
+} from "date-fns";
+
 export class DayTracker {
   dates: Date[] = [];
 
-  constructor() {
-    this.dates = this.createDateArray();
+  constructor(monthsAfter: number, monthsBefore: number) {
+    this.dates = this.createDateArray(monthsAfter, monthsBefore);
   }
 
-  createDateArray(): Date[] {
+  createDateArray(monthsAfter: number, monthsBefore: number): Date[] {
     // create a day array for the current month
     const date = new Date();
-    const year = date.getFullYear();
-    const month = date.getMonth();
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const startDate = nextMonday(subMonths(date, monthsBefore));
+    const lastDate = addMonths(date, monthsAfter);
+    const numberOfDaysToMake = differenceInCalendarDays(lastDate, startDate);
     const days = [];
 
-    for (let i = 1; i <= daysInMonth; i++) {
-      days.push(new Date(year, month, i));
+    for (let i = 0; i <= numberOfDaysToMake; i++) {
+      days.push(addDays(startDate, i));
     }
 
     return days;
@@ -22,10 +31,15 @@ export class DayTracker {
 
   getDayColor(day: Date) {
     // render a special color if today
-    const today = new Date();
-    if (day.toDateString() === today.toDateString()) {
-      return "rgb(0, 255, 0)";
+    if (isToday(day)) {
+      return "rgb(255, 162, 0)";
     }
     return "rgb(135, 135, 135)";
+  }
+
+  private getClosestMonday(date: Date) {
+    const day = date.getDay();
+    const diff = date.getDate() - day + (day == 0 ? -6 : 1);
+    return new Date(date.setDate(diff));
   }
 }
