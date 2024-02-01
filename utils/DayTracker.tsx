@@ -22,7 +22,6 @@ export class DayTracker {
     // create a day array for the current month
     const date = new Date();
     const startDate = nextMonday(subMonths(date, monthsBefore));
-    console.log("START DATE", startDate);
     const lastDate = addMonths(date, monthsAfter);
     const numberOfDaysToMake = differenceInCalendarDays(lastDate, startDate);
     const days = [];
@@ -35,23 +34,13 @@ export class DayTracker {
   }
 
   getDayColor(day: Date) {
-    console.log(day);
-    console.log("ACTIVITIES", this.activities);
-    this.activities.forEach((a) => {
-      console.log(a.start_date);
-      if (isSameDay(a.start_date, day)) {
-        console.log("found");
-      }
-    });
     // if there is an activity on this day, return a color
     const activity = this.activities.find((a) => {
       // see if the current date is the same as the activity date
       return isSameDay(a.start_date, day);
     });
 
-    if (isToday(day)) {
-      return "green";
-    } else if (activity) {
+    if (activity) {
       return "blue";
     } else {
       return "gray";

@@ -22,7 +22,7 @@ const ActivitiesPage = () => {
   const dates = dayTracker.dates;
   const [loading, setLoading] = useState(true);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     dayTracker.transformDaysToActivities(subDays(new Date(), 90)).then(() => {
       setLoading(false);
     });
@@ -84,8 +84,8 @@ const ActivitiesPage = () => {
 export default ActivitiesPage;
 
 const DayDot = styled.div`
-  height: 20px;
-  width: 20px;
+  height: 12px;
+  width: 12px;
   border-radius: 2px;
   background-color: ${(props) => props.color};
 `;

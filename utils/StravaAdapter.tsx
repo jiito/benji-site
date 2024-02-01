@@ -1,3 +1,4 @@
+import testData from "../testData.json";
 export class StravaAdapter {
   static getStravaData(startDate: Date) {
     return fetch(
@@ -14,6 +15,10 @@ export class StravaAdapter {
       .then((data) => {
         console.log(data);
         return data;
+      })
+      .catch(() => {
+        console.log(testData);
+        return testData;
       });
   }
 }
