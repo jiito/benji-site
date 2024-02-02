@@ -1,6 +1,18 @@
 import testData from "../testData.json";
-export class StravaAdapter {
-  static getStravaData(startDate: Date) {
+
+let instance: StravaAdapter | null;
+class StravaAdapter {
+  access_token: string;
+
+  constructor() {
+    this.access_token = "";
+  }
+
+  refeshAccessToken() {
+    return;
+  }
+
+  getStravaData(startDate: Date) {
     return fetch(
       "https://www.strava.com/api/v3/athlete/activities?after=" +
         startDate.getTime() / 1000 +
@@ -20,5 +32,12 @@ export class StravaAdapter {
         console.log(testData);
         return testData;
       });
+  }
+}
+
+export function getStravaAdapter() {
+  if (instance) return instance;
+  else {
+    return new StravaAdapter();
   }
 }
