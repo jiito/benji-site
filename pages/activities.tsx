@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { useEffect, useLayoutEffect, useState } from "react";
 import { DayTracker } from "../utils/DayTracker";
 import { subDays } from "date-fns";
+import ActivityGraph from "../components/ActivityTracker/ActivityGraph";
 
 const INDEX_TO_DAY: Record<number, string> = {
   0: "Mon",
@@ -18,64 +19,24 @@ const INDEX_TO_DAY: Record<number, string> = {
 // TODO: move this to a singleton
 const dayTracker = new DayTracker(0, 3);
 
+const testActivities = [
+  { start_date: "2024-03-01" },
+  { start_date: "2024-03-15" },
+  { start_date: "2024-03-20" },
+  { start_date: "2024-04-02" },
+  { start_date: "2024-04-15" },
+  { start_date: "2024-04-25" },
+  { start_date: "2024-05-05" },
+];
+
 const ActivitiesPage = () => {
-  const dates = dayTracker.dates;
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    dayTracker.transformDaysToActivities(subDays(new Date(), 90)).then(() => {
-      setLoading(false);
-    });
-  }, []);
-
-  const normalizeIndex = (weekIndex: number, dayIndex: number) => {
-    return weekIndex;
-  };
-
-  const TableRows = () => {
-    dayTracker.transformDaysToActivities(subDays(new Date(), 12));
-    const rows: JSX.Element[][] = Array.from({ length: 7 }, (_, i) => [
-      <RowTagContainer key={`day-${i}`}>
-        <RowTag>{INDEX_TO_DAY[i]}</RowTag>
-      </RowTagContainer>,
-    ]);
-
-    for (let i = 0; i < dates.length; i++) {
-      const date = dates[i];
-      const weekIndex = Math.floor(i / 7);
-      const dayIndex = i % 7;
-      const color = dayTracker.getDayColor(date);
-
-      rows[dayIndex].push(
-        <td key={i}>
-          <DayDot color={color} />
-        </td>
-      );
-    }
-
-    return (
-      <>
-        {rows.map((r) => (
-          <tr>{r}</tr>
-        ))}
-      </>
-    );
-  };
   return (
     <Layout>
       <div>
         <div>
           {/* ACTIVITY TRACKER */}
           <h4>Biking Tracker</h4>
-          {loading ? (
-            <p>Loading...</p>
-          ) : (
-            <table>
-              <tbody>
-                <TableRows />
-              </tbody>
-            </table>
-          )}
+          <ActivityGraph activities={testActivities} />
         </div>
       </div>
     </Layout>

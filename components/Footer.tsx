@@ -11,7 +11,6 @@ const SOCIAL_LINKS = [
     href: "https://github.com/jiito",
   },
 ];
-
 const Footer = () => {
   return (
     <Container>
