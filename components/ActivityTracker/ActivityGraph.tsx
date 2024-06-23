@@ -25,39 +25,81 @@ const getDaysSinceDate = (date: Date) => {
   return Math.floor(diff / oneDay);
 };
 
+const getDateFromDiff = (diff: number) => {
+  const today = new Date();
+  const date = new Date(today.getFullYear(), 0, 1);
+  date.setDate(date.getDate() + diff);
+  return date;
+};
+
+function isLeapYear(date: Date) {
+  const year = date.getFullYear();
+  return year % 4 === 0
+    ? year % 100 === 0
+      ? year % 400 === 0
+        ? true
+        : false
+      : true
+    : false;
+}
+
+/**
+ *
+ * @param date the date to compute from
+ * @param weekAgo the week number
+ * @param dayOfWeek
+ * @returns
+ */
+const monthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+function lastDayOfMonth(monthIdx: number, leapYear = false) {
+  if (monthIdx == 1 && leapYear) {
+    return 29;
+  }
+  return monthDays[monthIdx];
+}
+const computeDateFromDiff = (date: Date, diff: number): Date => {
+  console.assert(diff < 0);
+
+  if (diff > date.getDate()) {
+    let newMonth = date.getMonth() - 1;
+    let newYear = date.getFullYear();
+    if (date.getMonth() == 0) {
+      newMonth = 11;
+      newYear--;
+    }
+    return computeDateFromDiff(
+      new Date(newYear, newMonth, lastDayOfMonth(newMonth, isLeapYear(date))),
+      diff - date.getDate()
+    );
+  } else {
+    return new Date(date.getFullYear(), date.getMonth(), date.getDate() - diff);
+  }
+};
+
 const ActivityGraph: React.FC<ActivityGraphProps> = ({ activities }) => {
   const today = new Date();
-  const currentDayOfWeek = today.getDay();
-  const daysSinceLastYear = getDaysSinceDate(
-    new Date(today.getFullYear() - 1, today.getMonth(), today.getDate())
+
+  const activityDays = activities.map(
+    (activity) => new Date(activity.start_date)
   );
 
-  const activityDays = activities.map((activity) => {
-    const date = new Date(activity.start_date);
-    return getDaysSinceDate(date);
-  });
-
-  const weeksInYear = Math.ceil(daysSinceLastYear / 7);
   const tableRows = [];
   for (let day = 0; day < 7; day++) {
     const cells = [];
-    for (let week = 0; week < weeksInYear; week++) {
-      const daySinceLastYear = week * 7 + day;
-      const isActive = activityDays.includes(daySinceLastYear);
-      const isToday = daySinceLastYear === 0 && day === currentDayOfWeek;
-      const date = new Date(today.getFullYear(), 0, 1);
-      date.setDate(date.getDate() + daySinceLastYear);
-      const tooltip = date.toDateString();
-      // Only display up to the current day of the week for the last week
-      if (week === weeksInYear - 1 && day > currentDayOfWeek) {
-        break;
-      }
+    for (let week = 0; week < 52; week++) {
+      const dayOffset = today.getDay() - day;
+      const dayDiff = week * 7 + dayOffset;
+      const cellDay = computeDateFromDiff(today, dayDiff);
+      const matchingActivityDays = activityDays.filter(
+        (ad) => ad.toDateString() == cellDay.toDateString()
+      );
+
       cells.unshift(
         <td
           key={week}
-          title={tooltip}
+          title={cellDay.toDateString()}
           style={{
-            backgroundColor: isToday ? "blue" : isActive ? "red" : "gray",
+            backgroundColor: matchingActivityDays.length > 0 ? "red" : "gray",
             width: "10px",
             height: "10px",
           }}
@@ -67,10 +109,25 @@ const ActivityGraph: React.FC<ActivityGraphProps> = ({ activities }) => {
     tableRows.push(<tr key={day}>{cells}</tr>);
   }
 
+  const dateDiffsToTest = [0, 7, 43, 68, 100, 300];
+
   return (
-    <table>
-      <tbody>{tableRows}</tbody>
-    </table>
+    <>
+      <ul>
+        {activityDays.map((d) => (
+          <li>{d.toString()}</li>
+        ))}
+      </ul>
+      <table>
+        <tbody>{tableRows}</tbody>
+      </table>
+
+      <ul>
+        {dateDiffsToTest.map((diff) => (
+          <li>{computeDateFromDiff(new Date(), diff).toString()}</li>
+        ))}
+      </ul>
+    </>
   );
 };
 
