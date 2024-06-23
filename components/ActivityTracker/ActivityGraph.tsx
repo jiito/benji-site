@@ -88,6 +88,9 @@ const ActivityGraph: React.FC<ActivityGraphProps> = ({ activities }) => {
     const cells = [];
     for (let week = 0; week < 52; week++) {
       const dayOffset = today.getDay() - day;
+      if (week === 0 && dayOffset < 0) {
+        continue;
+      }
       const dayDiff = week * 7 + dayOffset;
       const cellDay = computeDateFromDiff(today, dayDiff);
       const matchingActivityDays = activityDays.filter(
@@ -100,6 +103,8 @@ const ActivityGraph: React.FC<ActivityGraphProps> = ({ activities }) => {
           title={cellDay.toDateString()}
           style={{
             backgroundColor: matchingActivityDays.length > 0 ? "red" : "gray",
+            borderRadius: "2px",
+
             width: "10px",
             height: "10px",
           }}
