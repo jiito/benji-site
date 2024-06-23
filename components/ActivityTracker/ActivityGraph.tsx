@@ -3,6 +3,7 @@ import { getStravaAdapter } from "../../utils/StravaAdapter";
 
 interface Activity {
   start_date: string;
+  distance: string;
 }
 
 interface ActivityGraphProps {
@@ -53,6 +54,21 @@ const computeDateFromDiff = (date: Date, diff: number): Date => {
   }
 };
 
+const getMaxValue = (metric: keyof Activity, activities: Activity[]) => {
+  return Math.max(
+    ...activities.map((activity) => parseFloat(activity[metric]))
+  );
+};
+const calculateNormalizedWeight = (
+  activity: Activity,
+  activities: Activity[],
+  metric: keyof Activity
+) => {
+  const dayValue = parseFloat(activity[metric]);
+  const maxValue = getMaxValue(metric, activities);
+  return dayValue / maxValue;
+};
+
 const ActivityGraph: React.FC<ActivityGraphProps> = () => {
   const [activities, setActivities] = useState<Activity[]>([]);
   const [loading, setLoading] = useState(true);
@@ -67,6 +83,7 @@ const ActivityGraph: React.FC<ActivityGraphProps> = () => {
       await getStravaAdapter().getActivitiesPage(3)
     );
 
+    // TODO: add a check that takes the last day needed and makes sure we have all the data for that
     // if (
     //   activities.sort((a, b) => new Date(a.start_date) > new Date(b.start_date))[0] <
     // )
@@ -94,15 +111,26 @@ const ActivityGraph: React.FC<ActivityGraphProps> = () => {
       );
       console.log(matchingActivityDays);
 
+      const getDayColor = (activity: Activity) => {
+        const normalizedWeight = calculateNormalizedWeight(
+          activity,
+          activities,
+          "distance"
+        );
+        return `hsl(200, 100%, ${80 - normalizedWeight * 100}%)`;
+      };
+
       cells.unshift(
         <td
           key={week}
           title={cellDay.toDateString()}
           style={{
             backgroundColor:
-              matchingActivityDays.length > 0 ? "orange" : "gray",
-            borderRadius: "2px",
+              matchingActivityDays.length > 0
+                ? getDayColor(matchingActivityDays[0])
+                : "gray",
 
+            borderRadius: "2px",
             width: "10px",
             height: "10px",
           }}
