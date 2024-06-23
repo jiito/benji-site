@@ -102,7 +102,8 @@ const ActivityGraph: React.FC<ActivityGraphProps> = ({ activities }) => {
           key={week}
           title={cellDay.toDateString()}
           style={{
-            backgroundColor: matchingActivityDays.length > 0 ? "red" : "gray",
+            backgroundColor:
+              matchingActivityDays.length > 0 ? "orange" : "gray",
             borderRadius: "2px",
 
             width: "10px",
@@ -118,20 +119,9 @@ const ActivityGraph: React.FC<ActivityGraphProps> = ({ activities }) => {
 
   return (
     <>
-      <ul>
-        {activityDays.map((d) => (
-          <li>{d.toString()}</li>
-        ))}
-      </ul>
       <table>
         <tbody>{tableRows}</tbody>
       </table>
-
-      <ul>
-        {dateDiffsToTest.map((diff) => (
-          <li>{computeDateFromDiff(new Date(), diff).toString()}</li>
-        ))}
-      </ul>
     </>
   );
 };

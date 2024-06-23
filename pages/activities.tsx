@@ -5,6 +5,7 @@ import { useEffect, useLayoutEffect, useState } from "react";
 import { DayTracker } from "../utils/DayTracker";
 import { subDays } from "date-fns";
 import ActivityGraph from "../components/ActivityTracker/ActivityGraph";
+import activitiesData from "../data/mockActivites.json";
 
 const INDEX_TO_DAY: Record<number, string> = {
   0: "Mon",
@@ -19,16 +20,6 @@ const INDEX_TO_DAY: Record<number, string> = {
 // TODO: move this to a singleton
 const dayTracker = new DayTracker(0, 3);
 
-const testActivities = [
-  { start_date: "2024-03-01" },
-  { start_date: "2024-03-15" },
-  { start_date: "2024-03-20" },
-  { start_date: "2024-04-02" },
-  { start_date: "2024-04-15" },
-  { start_date: "2024-04-25" },
-  { start_date: "2024-05-05" },
-];
-
 const ActivitiesPage = () => {
   return (
     <Layout>
@@ -36,7 +27,7 @@ const ActivitiesPage = () => {
         <div>
           {/* ACTIVITY TRACKER */}
           <h4>Biking Tracker</h4>
-          <ActivityGraph activities={testActivities} />
+          <ActivityGraph activities={activitiesData} />
         </div>
       </div>
     </Layout>
