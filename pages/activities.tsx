@@ -6,6 +6,7 @@ import { DayTracker } from "../utils/DayTracker";
 import { subDays } from "date-fns";
 import ActivityGraph from "../components/ActivityTracker/ActivityGraph";
 import activitiesData from "../data/mockActivites.json";
+import { getStravaAdapter } from "../utils/StravaAdapter";
 
 const INDEX_TO_DAY: Record<number, string> = {
   0: "Mon",
@@ -18,7 +19,6 @@ const INDEX_TO_DAY: Record<number, string> = {
 };
 
 // TODO: move this to a singleton
-const dayTracker = new DayTracker(0, 3);
 
 const ActivitiesPage = () => {
   return (
@@ -27,7 +27,7 @@ const ActivitiesPage = () => {
         <div>
           {/* ACTIVITY TRACKER */}
           <h4>Biking Tracker</h4>
-          <ActivityGraph activities={activitiesData} />
+          <ActivityGraph />
         </div>
       </div>
     </Layout>

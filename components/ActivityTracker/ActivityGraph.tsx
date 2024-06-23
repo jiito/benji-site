@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { getStravaAdapter } from "../../utils/StravaAdapter";
 
 interface Activity {
   start_date: string;
@@ -7,30 +8,6 @@ interface Activity {
 interface ActivityGraphProps {
   activities: Activity[];
 }
-
-const getDayOfYear = (date: Date) => {
-  const start = new Date(date.getFullYear(), 0, 0);
-  const diff =
-    date.getTime() -
-    start.getTime() +
-    (start.getTimezoneOffset() - date.getTimezoneOffset()) * 60 * 1000;
-  const oneDay = 1000 * 60 * 60 * 24;
-  return Math.floor(diff / oneDay);
-};
-
-const getDaysSinceDate = (date: Date) => {
-  const today = new Date();
-  const diff = today.getTime() - date.getTime();
-  const oneDay = 1000 * 60 * 60 * 24;
-  return Math.floor(diff / oneDay);
-};
-
-const getDateFromDiff = (diff: number) => {
-  const today = new Date();
-  const date = new Date(today.getFullYear(), 0, 1);
-  date.setDate(date.getDate() + diff);
-  return date;
-};
 
 function isLeapYear(date: Date) {
   const year = date.getFullYear();
@@ -58,7 +35,7 @@ function lastDayOfMonth(monthIdx: number, leapYear = false) {
   return monthDays[monthIdx];
 }
 const computeDateFromDiff = (date: Date, diff: number): Date => {
-  console.assert(diff < 0);
+  // console.assert(diff < 0);
 
   if (diff > date.getDate()) {
     let newMonth = date.getMonth() - 1;
@@ -76,12 +53,30 @@ const computeDateFromDiff = (date: Date, diff: number): Date => {
   }
 };
 
-const ActivityGraph: React.FC<ActivityGraphProps> = ({ activities }) => {
-  const today = new Date();
+const ActivityGraph: React.FC<ActivityGraphProps> = () => {
+  const [activities, setActivities] = useState<Activity[]>([]);
+  const [loading, setLoading] = useState(true);
+  const fetchActivities = async () => {
+    setLoading(true);
+    let activities: Activity[] = [];
+    activities = await getStravaAdapter().getActivitiesPage(1);
+    activities = activities.concat(
+      await getStravaAdapter().getActivitiesPage(2)
+    );
+    activities = activities.concat(
+      await getStravaAdapter().getActivitiesPage(3)
+    );
 
-  const activityDays = activities.map(
-    (activity) => new Date(activity.start_date)
-  );
+    // if (
+    //   activities.sort((a, b) => new Date(a.start_date) > new Date(b.start_date))[0] <
+    // )
+    setActivities(activities);
+    setLoading(false);
+  };
+  useEffect(() => {
+    fetchActivities();
+  }, []);
+  const today = new Date();
 
   const tableRows = [];
   for (let day = 0; day < 7; day++) {
@@ -93,9 +88,11 @@ const ActivityGraph: React.FC<ActivityGraphProps> = ({ activities }) => {
       }
       const dayDiff = week * 7 + dayOffset;
       const cellDay = computeDateFromDiff(today, dayDiff);
-      const matchingActivityDays = activityDays.filter(
-        (ad) => ad.toDateString() == cellDay.toDateString()
+      console.log(cellDay, activities);
+      const matchingActivityDays = activities.filter(
+        (ad) => new Date(ad.start_date).toDateString() == cellDay.toDateString()
       );
+      console.log(matchingActivityDays);
 
       cells.unshift(
         <td
@@ -115,10 +112,9 @@ const ActivityGraph: React.FC<ActivityGraphProps> = ({ activities }) => {
     tableRows.push(<tr key={day}>{cells}</tr>);
   }
 
-  const dateDiffsToTest = [0, 7, 43, 68, 100, 300];
-
   return (
     <>
+      {loading ? <div>Loading...</div> : null}
       <table>
         <tbody>{tableRows}</tbody>
       </table>

@@ -5,21 +5,21 @@ class StravaAdapter {
   access_token: string;
 
   constructor() {
-    this.access_token = "";
+    this.access_token = process.env.NEXT_PUBLIC_STRAVA_API_KEY || "";
   }
 
   refeshAccessToken() {
     return;
   }
 
-  getStravaData(startDate: Date) {
+  getActivitiesPage(page?: number) {
     return fetch(
-      "https://www.strava.com/api/v3/athlete/activities?after=" +
-        startDate.getTime() / 1000 +
-        "&per_page=100",
+      `https://www.strava.com/api/v3/athlete/activities?per_page=100${
+        page ? `&page=${page}` : ""
+      }`,
       {
         headers: {
-          Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAVA_API_KEY}`,
+          Authorization: `Bearer ${this.access_token}`,
         },
       }
     )
@@ -38,6 +38,7 @@ class StravaAdapter {
 export function getStravaAdapter() {
   if (instance) return instance;
   else {
-    return new StravaAdapter();
+    instance = new StravaAdapter();
+    return instance;
   }
 }
