@@ -1,45 +1,30 @@
+"use client";
+
 import { NavBar } from "./Navbar";
 import Link from "next/link";
 import React from "react";
 import Footer from "./Footer";
-import styled from "styled-components";
 
-export const Layout: React.FC = ({ children }) => {
+interface LayoutProps {
+  children: React.ReactNode;
+}
+
+export const Layout = ({ children }: LayoutProps) => {
   return (
-    <PageContainer>
-      <>
+    <div className="mx-auto p-4 max-w-[750px]">
+      <header className="mb-8">
         <NavBar />
-        <HomeLink>
-          <Link href={"/"}>
-            <h1>Ben Allan-Rahill</h1>
+        <div className="mt-4">
+          <Link href={"/"} className="hover:cursor-pointer">
+            <h1 className="text-2xl font-bold mb-2">Ben Allan-Rahill</h1>
           </Link>
-        </HomeLink>
-        <Email>
-          ben [at] [<i>this domain</i>]
-        </Email>
-      </>
-      <div className="main">{children}</div>
+          <p className="italic text-sm font-normal text-gray-500">
+            ben [at] [<i>this domain</i>]
+          </p>
+        </div>
+      </header>
+      <main className="main">{children}</main>
       <Footer />
-    </PageContainer>
+    </div>
   );
 };
-
-const Email = styled.p`
-  font-style: italic;
-  font-size: 14px;
-  font-weight: 400;
-  color: #7c7c7c;
-`;
-
-const HomeLink = styled.div`
-  :hover {
-    cursor: pointer;
-  }
-  margin-bottom: -1.5rem;
-`;
-
-const PageContainer = styled.div`
-  margin: auto;
-  padding: 15px;
-  max-width: 750px;
-`;

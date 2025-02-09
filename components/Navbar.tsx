@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 
 const NAVLINKS = [
@@ -17,16 +19,18 @@ const NAVLINKS = [
 
 export const NavBar = () => {
   return (
-    <>
-      <div className="nav">
-        <nav>
-          {NAVLINKS.map((item, i, arr) => (
-            <Link href={item.link} key={i}>
-              {"/" + item.name}
-            </Link>
-          ))}
-        </nav>
-      </div>
-    </>
+    <div className="mb-4">
+      <nav className="flex text-base justify-between text-blue-600 pb-1 border-b border-[#f3f3f3]">
+        {NAVLINKS.map((item) => (
+          <Link
+            href={item.link}
+            key={item.name}
+            className="hover:text-blue-800 transition-colors"
+          >
+            {"/" + item.name}
+          </Link>
+        ))}
+      </nav>
+    </div>
   );
 };

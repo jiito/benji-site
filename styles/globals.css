@@ -1,67 +1,54 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@import "tailwindcss";
+
+@layer base {
+  html,
+  body {
+    @apply p-0 m-0;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  }
+
+  a {
+    @apply text-blue-600 no-underline;
+  }
+
+  * {
+    @apply box-border;
+  }
 }
 
-a {
-  color: blue;
-  text-decoration: none;
-}
+@layer components {
+  .container {
+    @apply mx-auto max-w-[750px];
+  }
 
-* {
-  box-sizing: border-box;
-}
+  .main {
+    @apply flex flex-col max-w-[700px] break-words;
+  }
 
-.container {
-  margin: auto;
-  max-width: 750px;
-}
+  nav {
+    @apply flex text-base justify-between text-blue-600 pb-1 border-b border-[#f3f3f3];
+  }
 
-.main {
-  display: flex;
-  flex-direction: column;
-  max-width: 700px;
-  word-wrap: break-word;
-}
+  nav span {
+    @apply cursor-pointer;
+  }
 
-nav {
-  display: flex;
-  font-size: 16px;
-  justify-content: space-between;
-  color: blue;
-  padding-bottom: 4px;
-  border-bottom: 1px solid #f3f3f3;
-}
+  .construction {
+    @apply bg-yellow-300 p-2.5 animate-[blinker_0.5s_linear_infinite];
+  }
 
-nav span {
-  cursor: pointer;
-}
+  .tagline {
+    @apply italic inline-block text-sm;
+  }
 
-.construction {
-  background: yellow;
-  padding: 10px;
-
-  animation: blinker 0.5s linear infinite;
+  .work-experience h5 {
+    @apply inline-block text-base mr-2 mb-3;
+  }
 }
 
 @keyframes blinker {
   50% {
     background: white;
   }
-}
-
-.tagline {
-  font-style: italic;
-  display: inline-block;
-  font-size: 14px;
-}
-
-.work-experience h5 {
-  display: inline-block;
-  font-size: 16px;
-  margin-right: 8px;
-  margin-bottom: 12px;
 }
