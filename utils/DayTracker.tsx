@@ -8,7 +8,7 @@ import {
   differenceInCalendarDays,
   isEqual,
 } from "date-fns";
-import { StravaAdapter } from "./StravaAdapter";
+import { getStravaAdapter } from "./StravaAdapter";
 
 export class DayTracker {
   dates: Date[] = [];
@@ -48,7 +48,7 @@ export class DayTracker {
   }
 
   async transformDaysToActivities(startDate: Date) {
-    this.activities = await StravaAdapter.getStravaData(startDate);
+    this.activities = await getStravaAdapter().getActivitiesPage(1);
 
     this.activities = this.activities.map((a: any) => {
       return {

@@ -1,6 +1,6 @@
 import { Layout } from "../../components/Layout";
 
-const WordsPage = () => {
+export default function WordsPage() {
   return (
     <Layout>
       <p>
@@ -9,6 +9,4 @@ const WordsPage = () => {
       </p>
     </Layout>
   );
-};
-
-export default WordsPage;
+}

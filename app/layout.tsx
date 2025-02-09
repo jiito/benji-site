@@ -1,5 +1,6 @@
 import "../styles/globals.css";
 import { Metadata } from "next";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "jiito",
@@ -25,26 +26,23 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        {/* Global Site Tag (gtag.js) - Google Analytics */}
-        <script
-          async
+      <body>
+        {children}
+        <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
+          strategy="afterInteractive"
         />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
               page_path: window.location.pathname,
             });
-          `,
-          }}
-        />
-      </head>
-      <body>{children}</body>
+          `}
+        </Script>
+      </body>
     </html>
   );
 }
