@@ -1,4 +1,5 @@
-import styled from "styled-components";
+"use client";
+
 import Link from "next/link";
 
 const SOCIAL_LINKS = [
@@ -11,50 +12,27 @@ const SOCIAL_LINKS = [
     href: "https://github.com/jiito",
   },
 ];
+
 const Footer = () => {
   return (
-    <Container>
-      <Break />
-      <CenteredDiv>
-        <SocialLinks>
+    <div className="mt-10 text-gray-500">
+      <hr className="w-1/4 mx-auto border-gray-300" />
+      <div className="mx-auto flex flex-col items-center justify-center mt-4">
+        <div className="flex w-full flex-row justify-center">
           {SOCIAL_LINKS.map((s) => (
-            <Link href={s.href} passHref>
-              <SocialLinkItem>{s.name}</SocialLinkItem>
+            <Link
+              key={s.name}
+              href={s.href}
+              className="mr-2 hover:text-gray-700 transition-colors"
+            >
+              {s.name}
             </Link>
           ))}
-        </SocialLinks>
-        <p>built by benji ar © 2023</p>
-      </CenteredDiv>
-    </Container>
+        </div>
+        <p className="mt-2 text-sm">built by benji ar © 2023</p>
+      </div>
+    </div>
   );
 };
+
 export default Footer;
-
-const Container = styled.div`
-  margin-top: 40px;
-  color: gray;
-`;
-
-const Break = styled.hr`
-  color: gray;
-  width: 25%;
-`;
-
-const CenteredDiv = styled.div`
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
-
-const SocialLinks = styled.div`
-  display: flex;
-  width: 100%;
-  flex-direction: row;
-  justify-content: center;
-`;
-
-const SocialLinkItem = styled.a`
-  margin-right: 8px;
-`;
