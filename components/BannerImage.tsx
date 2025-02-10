@@ -11,14 +11,17 @@ interface BannerImageProps {
 
 export function BannerImage({ src, height, width, alt }: BannerImageProps) {
   return (
-    <div className="w-full mb-8">
+    <div
+      className={`w-[${width}px] h-[${height}px] mb-8 rounded-lg overflow-hidden`}
+    >
       <Image
         src={src}
+        alt={alt}
+        // style={{ objectFit: "cover" }}
         height={height}
         width={width}
-        alt={alt}
-        className="w-full h-auto rounded-lg"
-        style={{ objectFit: "cover" }}
+        className="!h-[200px] object-cover w-full rounded-lg"
+        priority
       />
     </div>
   );

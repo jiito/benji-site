@@ -15,8 +15,10 @@ export const Layout = ({ children }: LayoutProps) => {
       <header className="mb-8">
         <NavBar />
         <div className="mt-4">
-          <Link href={"/"} className="hover:cursor-pointer">
-            <h1 className="text-2xl font-bold mb-2">Ben Allan-Rahill</h1>
+          <Link href={"/"} className="hover:cursor-pointer hover:underline">
+            <h1 className="text-2xl font-bold mb-2 text-gray-800">
+              Ben Allan-Rahill
+            </h1>
           </Link>
           <p className="italic text-sm font-normal text-gray-500">
             ben [at] [<i>this domain</i>]
