@@ -1,70 +1,10 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
 
 interface Activity {
   id: number;
   start_date: string;
   distance: number;
 }
-
-interface StyledDivProps extends React.HTMLAttributes<HTMLDivElement> {
-  $active?: boolean;
-  $width?: string;
-}
-
-const Cell = styled.td<StyledDivProps>`
-  /* padding: 2px; */
-  &:hover {
-    transform: scale(1.1);
-    transition: transform 0.2s ease-in-out;
-  }
-`;
-
-const CellBlock = styled.div<StyledDivProps>`
-  width: 10px;
-  height: 10px;
-  background-color: ${(props) => (props.$active ? "#22c55e" : "#e5e7eb")};
-  border-radius: 2px;
-`;
-
-const TableBody = styled.tbody<StyledDivProps>`
-  width: 100%;
-  border-spacing: 3px;
-`;
-
-const Row = styled.tr<StyledDivProps>`
-  height: 10px;
-`;
-
-const DayLabel = styled.div<React.HTMLAttributes<HTMLDivElement>>`
-  color: #9ca3af;
-  font-size: 12px;
-  width: 30px;
-  text-align: right;
-  margin-right: 4px;
-  height: 10px;
-`;
-
-const MonthsContainer = styled.div<React.HTMLAttributes<HTMLDivElement>>`
-  display: flex;
-  margin-left: 34px;
-  margin-bottom: 8px;
-`;
-
-const MonthLabel = styled.div<StyledDivProps>`
-  color: #9ca3af;
-  font-size: 12px;
-  width: ${(props) => props.$width};
-  text-align: left;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  min-width: 24px;
-`;
-
-const GraphContainer = styled.div<React.HTMLAttributes<HTMLDivElement>>`
-  padding: 16px;
-`;
 
 const ActivityGraph: React.FC = () => {
   const [activities, setActivities] = useState<Activity[]>([]);
@@ -129,45 +69,57 @@ const ActivityGraph: React.FC = () => {
   const gapWidth = 2; // Gap between cells
 
   return (
-    <GraphContainer>
-      <MonthsContainer>
+    <div className="p-4">
+      <div className="flex ml-[34px] mb-2">
         {monthsData.map(({ month, weekCount }, index) => {
           const width = weekCount * (cellWidth + gapWidth) - gapWidth;
           return (
-            <MonthLabel key={`${month}-${index}`} $width={`${width}px`}>
+            <div
+              key={`${month}-${index}`}
+              className="text-gray-400 text-xs min-w-6 text-left whitespace-nowrap overflow-hidden text-ellipsis"
+              style={{ width: `${width}px` }}
+            >
               {month}
-            </MonthLabel>
+            </div>
           );
         })}
-      </MonthsContainer>
-      <TableBody>
-        {[0, 1, 2, 3, 4, 5, 6].map((dayIndex) => (
-          <Row key={dayIndex}>
-            <DayLabel>{dayLabels[dayIndex]}</DayLabel>
-            {weeks.map((week, weekIndex) => {
-              const date = week[dayIndex];
-              if (!date) return null;
+      </div>
+      <table className="w-full border-spacing-2">
+        <tbody className="w-full border-spacing-2">
+          {[0, 1, 2, 3, 4, 5, 6].map((dayIndex) => (
+            <tr key={dayIndex} className="h-[10px] border-spacing-2">
+              <div className="text-gray-400 text-xs w-[30px] text-right mr-1 h-[10px]">
+                {dayLabels[dayIndex]}
+              </div>
+              {weeks.map((week, weekIndex) => {
+                const date = week[dayIndex];
+                if (!date) return null;
 
-              const hasActivity = activities.some(
-                (activity) =>
-                  new Date(activity.start_date).toDateString() ===
-                  date.toDateString()
-              );
+                const hasActivity = activities.some(
+                  (activity) =>
+                    new Date(activity.start_date).toDateString() ===
+                    date.toDateString()
+                );
 
-              return (
-                <Cell
-                  key={`${weekIndex}-${dayIndex}`}
-                  $active={hasActivity}
-                  title={date.toLocaleDateString()}
-                >
-                  <CellBlock $active={hasActivity} />
-                </Cell>
-              );
-            })}
-          </Row>
-        ))}
-      </TableBody>
-    </GraphContainer>
+                return (
+                  <td
+                    key={`${weekIndex}-${dayIndex}`}
+                    className="hover:scale-110 transition-transform duration-200 ease-in-out"
+                    title={date.toLocaleDateString()}
+                  >
+                    <div
+                      className={`w-[10px] h-[10px] rounded-[2px] ${
+                        hasActivity ? "bg-green-500" : "bg-gray-200"
+                      }`}
+                    />
+                  </td>
+                );
+              })}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 };
 

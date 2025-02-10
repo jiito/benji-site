@@ -1,51 +1,31 @@
-import { Project } from "../data/projects";
-import Link from "next/link";
-import styled from "styled-components";
+"use client";
 
-type ProjectProps = {
-  project: Project;
-};
+import { Project as ProjectType } from "../data/projects";
 
-const ProjectItem = ({ project }: ProjectProps) => {
+interface ProjectProps {
+  project: ProjectType;
+}
+
+export default function Project({ project }: ProjectProps) {
   return (
-    <ProjectContainer>
-      <Link href={project.href} passHref>
-        <ProjectLink>{project.name}</ProjectLink>
-      </Link>
-      <Description>{project.description}</Description>
-      <ToolsUsedContainer>{project.toolsUsed.join(", ")}</ToolsUsedContainer>
-    </ProjectContainer>
+    <div className="mb-8 bg-[#f3f3f3] p-5 rounded-lg border border-[#e9e9e9]">
+      <a
+        href={project.href}
+        target="_blank"
+        rel="noreferrer"
+        className="underline"
+      >
+        <h4 className="text-lg font-semibold mb-2">{project.name}</h4>
+      </a>
+      <p className="mt-0 italic mb-4">{project.description}</p>
+      <div className="flex flex-wrap gap-2 text-gray-600 italic">
+        {project.toolsUsed.map((tool) => (
+          <span key={tool} className="text-sm">
+            {tool}
+            {tool !== project.toolsUsed[project.toolsUsed.length - 1] && ", "}
+          </span>
+        ))}
+      </div>
+    </div>
   );
-};
-
-export default ProjectItem;
-
-const ProjectContainer = styled.div`
-  margin-bottom: 10px;
-  background: #f3f3f3;
-  padding: 10px 20px;
-  border-radius: 5px;
-  border: 1px solid #e9e9e9;
-`;
-
-const ProjectLink = styled.a`
-  text-decoration: underline;
-`;
-
-const Description = styled.p`
-  font-style: italic;
-`;
-
-const Gear = styled.span`
-  margin-right: 4px;
-  font-style: normal;
-`;
-
-const ToolsUsedContainer = styled.div`
-  margin-top: 0;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  font-style: italic;
-  color: grey;
-`;
+}

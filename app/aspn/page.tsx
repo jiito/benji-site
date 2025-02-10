@@ -1,19 +1,26 @@
-import styled from "styled-components";
-import { Layout } from "../components/Layout";
+import { Layout } from "../../components/Layout";
 import Image from "next/image";
-import { BannerImage } from "../components/BannerImage";
+import { BannerImage } from "../../components/BannerImage";
 
-const AspnProjectPage = () => {
+export default function AspnProjectPage() {
   return (
     <Layout>
-      <BannerImage src="/knight-in-the-woods.png" height={100} width={500} />
+      <BannerImage
+        src="/knight-in-the-woods.png"
+        height={100}
+        width={500}
+        alt="Knight in the woods illustration"
+      />
       <h1>
-        <CodeSpan>aspn</CodeSpan>: Volunteer Hosting for Web Applications{" "}
+        <span className="bg-[#241023] font-mono text-[#00b295] px-2 py-0.5 rounded-[0.1em]">
+          aspn
+        </span>
+        : Volunteer Hosting for Web Applications{" "}
       </h1>
       <h3>Introduction</h3>
       <p>
         The field of volunteer computing was inspired by the realization of
-        Moore’s Law—computers will continue to get faster and smaller while
+        Moore's Law—computers will continue to get faster and smaller while
         becoming cheaper, exponentially [ And10 ]. On top of this, developers
         turn to cloud service providers (CSPs) to host all types of applications
         from consumer web apps to machine learning models. These hosting
@@ -44,8 +51,13 @@ const AspnProjectPage = () => {
         allows anyone with a device connected to the internet to support their
         favorite application and earn rewards by hosting microservices.
       </p>
-      <h3>Implementaion</h3>
-      <Image src="/aspn-system.png" height={1360 / 2} width={1760 / 2} />
+      <h3>Implementation</h3>
+      <Image
+        src="/aspn-system.png"
+        height={1360 / 2}
+        width={1760 / 2}
+        alt="ASPN system architecture diagram"
+      />
       <p>
         Typical web applications are built with a frontend and a backend. When a
         internet users accesses a web-page, under the hood, they are downloading
@@ -85,13 +97,4 @@ const AspnProjectPage = () => {
       </p>
     </Layout>
   );
-};
-export default AspnProjectPage;
-
-const CodeSpan = styled.span`
-  background: #241023;
-  font-family: monospace;
-  color: #00b295;
-  padding: 0.1em 0.2em;
-  border-radius: 0.1em;
-`;
+}

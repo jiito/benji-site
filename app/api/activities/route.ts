@@ -1,11 +1,31 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextResponse } from "next/server";
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+async function refreshToken() {
+  const response = await fetch("https://www.strava.com/oauth/token", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      client_id: process.env.STRAVA_CLIENT_ID,
+      client_secret: process.env.STRAVA_CLIENT_SECRET,
+      refresh_token: process.env.STRAVA_REFRESH_TOKEN,
+      grant_type: "refresh_token",
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to refresh token");
+  }
+
+  const data = await response.json();
+  return data.access_token;
+}
+
+export async function GET() {
   try {
-    const TOKEN = "62e9627babfac0ae901395eb4fafa13166b3d5e0";
+    // Get a fresh access token
+    const TOKEN = await refreshToken();
 
     // Calculate timestamps for date range (1 year ago to now)
     const now = Math.floor(Date.now() / 1000); // Current time in seconds
@@ -57,9 +77,12 @@ export default async function handler(
       (activity) => new Date(activity.start_date).getTime() / 1000 >= oneYearAgo
     );
 
-    res.status(200).json(filteredActivities);
+    return NextResponse.json(filteredActivities);
   } catch (error) {
     console.error("Error fetching activities:", error);
-    res.status(500).json({ error: "Failed to fetch activities" });
+    return NextResponse.json(
+      { error: "Failed to fetch activities" },
+      { status: 500 }
+    );
   }
 }
