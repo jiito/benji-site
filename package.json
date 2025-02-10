@@ -8,6 +8,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tailwindcss/postcss": "^4.0.5",
     "@typescript-eslint/eslint-plugin": "^5.30.4",
     "date-fns": "^3.3.1",
     "eslint-plugin-prettier": "^4.2.1",
