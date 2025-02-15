@@ -2,16 +2,16 @@
 import React, { useEffect, useState } from "react";
 import * as d3 from "d3";
 
-interface Activity {
+interface Contribution {
   id: number;
-  start_date: string;
-  distance: number;
+  date: string;
+  contribution_count: number;
 }
 
 interface CellProps {
   loading: boolean;
   date: Date;
-  activity?: Activity;
+  contribution?: Contribution;
   delay: number;
   colorScale: d3.ScaleLinear<string, string>;
 }
@@ -19,30 +19,28 @@ interface CellProps {
 const Cell: React.FC<CellProps> = ({
   loading,
   date,
-  activity,
+  contribution,
   delay,
   colorScale,
 }) => {
-  const hasActivity = !!activity;
-  const distance = activity?.distance || 0;
-  const distanceLabel = distance
-    ? distance > 1000
-      ? `${(distance / 1000).toFixed(1)} km`
-      : `${distance} m`
-    : "";
+  const hasContribution = !!contribution?.contribution_count;
+  const count = contribution?.contribution_count || 0;
+  const contributionLabel = count
+    ? `${count} contributions`
+    : "No contributions";
 
   return (
     <td
-      className="hover:scale-110 transition-transform duration-200 ease-in-out "
-      title={date.toLocaleDateString() + " " + distanceLabel}
+      className="hover:scale-110 transition-transform duration-200 ease-in-out"
+      title={`${date.toLocaleDateString()} - ${contributionLabel}`}
     >
       <div
         className="w-[10px] h-[10px] rounded-[2px] transition-colors duration-500"
         style={{
           backgroundColor: loading
             ? "#ebedf0"
-            : hasActivity
-            ? colorScale(distance)
+            : hasContribution
+            ? colorScale(count)
             : "#ebedf0",
           animation: loading ? `shimmer 1.5s infinite ${delay}ms` : "none",
         }}
@@ -51,8 +49,16 @@ const Cell: React.FC<CellProps> = ({
   );
 };
 
-const ActivityGraph: React.FC = () => {
-  const [activities, setActivities] = useState<Activity[]>([]);
+const DAYS_IN_WEEK = 7;
+
+// Helper function to ensure consistent date handling
+const normalizeDate = (date: Date | string): string => {
+  const d = new Date(date);
+  return d.toISOString().split("T")[0];
+};
+
+const GithubGraph: React.FC = () => {
+  const [contributions, setContributions] = useState<Contribution[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -60,8 +66,10 @@ const ActivityGraph: React.FC = () => {
   const endDate = new Date();
   const startDate = new Date(endDate);
   startDate.setDate(endDate.getDate() - 365);
+
   // Adjust to previous Sunday
-  startDate.setDate(startDate.getDate() - startDate.getDay());
+  const currentDay = startDate.getDay();
+  startDate.setDate(startDate.getDate() - currentDay);
 
   // Create array of dates
   const dates: Date[] = [];
@@ -71,36 +79,35 @@ const ActivityGraph: React.FC = () => {
     currentDate.setDate(currentDate.getDate() + 1);
   }
 
-  // Group into weeks
+  // Group into weeks starting from Sunday
   const weeks: Date[][] = [];
-  for (let i = 0; i < dates.length; i += 7) {
-    weeks.push(dates.slice(i, i + 7));
+  for (let i = 0; i < dates.length; i += DAYS_IN_WEEK) {
+    weeks.push(dates.slice(i, i + DAYS_IN_WEEK));
   }
 
   useEffect(() => {
-    const fetchActivities = async () => {
+    const fetchContributions = async () => {
       try {
         setLoading(true);
         setError(null);
-        const response = await fetch("/api/activities", {
-          headers: { access_token: "123" },
-        });
+        const response = await fetch("/api/github-contributions");
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        setActivities(Array.isArray(data) ? data : []);
+        setContributions(Array.isArray(data) ? data : []);
       } catch (error) {
-        console.error("Failed to fetch activities:", error);
-        setError("Failed to load activities. Please try again later.");
-        setActivities([]);
+        console.error("Failed to fetch contributions:", error);
+        setError(
+          "Failed to load GitHub contributions. Please try again later."
+        );
+        setContributions([]);
       } finally {
-        // Add a small delay before removing loading state to ensure smooth transition
         setTimeout(() => setLoading(false), 500);
       }
     };
 
-    fetchActivities();
+    fetchContributions();
   }, []);
 
   if (error) {
@@ -111,14 +118,14 @@ const ActivityGraph: React.FC = () => {
     );
   }
 
-  const maxDistance = Math.max(
-    ...activities.map((activity) => activity.distance),
+  const maxContributions = Math.max(
+    ...contributions.map((contribution) => contribution.contribution_count),
     1
   );
   const colorScale = d3
     .scaleLinear<string>()
-    .domain([0.1, maxDistance])
-    .range(["#9bbde9", "#214e6e"])
+    .domain([0.1, maxContributions])
+    .range(["#9be9a8", "#216e39"])
     .clamp(true);
 
   return (
@@ -131,10 +138,9 @@ const ActivityGraph: React.FC = () => {
                 const date = week[dayIndex];
                 if (!date) return null;
 
-                const activity = activities.find(
-                  (activity) =>
-                    new Date(activity.start_date).toDateString() ===
-                    date.toDateString()
+                const contribution = contributions.find(
+                  (contribution) =>
+                    normalizeDate(contribution.date) === normalizeDate(date)
                 );
 
                 return (
@@ -142,7 +148,7 @@ const ActivityGraph: React.FC = () => {
                     key={`${weekIndex}-${dayIndex}`}
                     loading={loading}
                     date={date}
-                    activity={activity}
+                    contribution={contribution}
                     delay={(weekIndex * 7 + dayIndex) * 20}
                     colorScale={colorScale}
                   />
@@ -156,4 +162,4 @@ const ActivityGraph: React.FC = () => {
   );
 };
 
-export default ActivityGraph;
+export default GithubGraph;

@@ -8,7 +8,7 @@ interface ProjectProps {
 
 export default function Project({ project }: ProjectProps) {
   return (
-    <div className="mb-8 bg-[#f3f3f3] p-5 rounded-lg border border-[#e9e9e9]">
+    <div className="mb-4 bg-[#f3f3f3] p-5 rounded-lg border border-[#e9e9e9]">
       <a
         href={project.href}
         target="_blank"
