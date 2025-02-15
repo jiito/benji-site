@@ -29,7 +29,9 @@ const Footer = () => {
             </Link>
           ))}
         </div>
-        <p className="mt-2 text-sm">built by benji ar © 2023</p>
+        <p className="mt-2 text-sm">
+          built by benji ar © {new Date().getFullYear()}
+        </p>
       </div>
     </div>
   );
