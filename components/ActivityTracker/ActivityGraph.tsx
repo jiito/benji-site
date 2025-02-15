@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect, useState } from "react";
 
 interface Activity {
@@ -70,7 +71,7 @@ const ActivityGraph: React.FC = () => {
 
   return (
     <div className="p-4">
-      <div className="flex ml-[34px] mb-2">
+      <div className="flex ml-[34px] mb-1">
         {monthsData.map(({ month, weekCount }, index) => {
           const width = weekCount * (cellWidth + gapWidth) - gapWidth;
           return (
@@ -87,7 +88,7 @@ const ActivityGraph: React.FC = () => {
       <table className="w-full border-spacing-2">
         <tbody className="w-full border-spacing-2">
           {[0, 1, 2, 3, 4, 5, 6].map((dayIndex) => (
-            <tr key={dayIndex} className="h-[10px] border-spacing-2">
+            <tr key={dayIndex} className="h-[12px] border-spacing-2">
               <div className="text-gray-400 text-xs w-[30px] text-right mr-1 h-[10px]">
                 {dayLabels[dayIndex]}
               </div>
