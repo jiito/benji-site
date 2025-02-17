@@ -104,6 +104,7 @@ interface ToggleButtonProps {
   icon: React.ReactNode;
   label: string;
   activeColor: string;
+  disabled: boolean;
 }
 
 const ToggleButton: React.FC<ToggleButtonProps> = ({
@@ -112,6 +113,7 @@ const ToggleButton: React.FC<ToggleButtonProps> = ({
   icon,
   label,
   activeColor,
+  disabled,
 }) => {
   const colorClasses = {
     "blue-600": "text-blue-600 stroke-blue-600",
@@ -121,7 +123,8 @@ const ToggleButton: React.FC<ToggleButtonProps> = ({
   return (
     <button
       onClick={onClick}
-      className={`p-2 rounded-full transition-all duration-300 ${
+      disabled={disabled}
+      className={`p-2 rounded-full transition-all duration-300 disabled:cursor-default cursor-pointer ${
         active
           ? colorClasses[activeColor as keyof typeof colorClasses]
           : "text-gray-400 stroke-gray-400"
@@ -231,6 +234,7 @@ const CombinedGraph: React.FC = () => {
     <>
       <div className="flex gap-1 items-center justify-end">
         <ToggleButton
+          disabled={loading || !showGithub}
           active={showStrava}
           onClick={() => setShowStrava(!showStrava)}
           icon={
@@ -240,6 +244,7 @@ const CombinedGraph: React.FC = () => {
           activeColor="blue-600"
         />
         <ToggleButton
+          disabled={loading || !showStrava}
           active={showGithub}
           onClick={() => setShowGithub(!showGithub)}
           icon={
