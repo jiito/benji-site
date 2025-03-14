@@ -24,7 +24,9 @@ export const Layout = ({ children }: LayoutProps) => {
           />
           <div className="flex flex-col">
             <Link href={"/"} className="hover:cursor-pointer hover:underline">
-              <h1 className="text-2xl font-bold  text-gray-800 ">ben-jiito</h1>
+              <h1 className="text-2xl font-bold  text-gray-800 ">
+                benjamin ar
+              </h1>
             </Link>
           </div>
         </div>

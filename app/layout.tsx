@@ -5,7 +5,7 @@ import Script from "next/script";
 export const metadata: Metadata = {
   title: "jiito",
   openGraph: {
-    title: "Ben Allan-Rahill (jiito)",
+    title: "Ben Allan-Rahill",
     images: [
       "https://www.benji.ar/_next/image?url=%2Fblue_spheres.png&w=3840&q=75",
     ],

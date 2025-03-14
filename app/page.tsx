@@ -1,4 +1,3 @@
-import { BannerImage } from "../components/BannerImage";
 import { Layout } from "../components/Layout";
 import Project from "../components/Project";
 import { projects } from "../data/projects";
