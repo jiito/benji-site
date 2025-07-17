@@ -17,9 +17,10 @@ function getPost(slug: string) {
 export default async function PostPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const post = getPost(params.slug);
+  const { slug } = await params;
+  const post = getPost(slug);
   if (!post) {
     return <div>Post not found</div>;
   }
