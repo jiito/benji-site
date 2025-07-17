@@ -1,22 +1,25 @@
 import fs from "fs";
 import path from "path";
+import Link from "next/link";
 
-function getPosts() {
-  const postsDirecotry = path.join(process.cwd(), "data/writing");
+function getPostSlugs() {
+  const postsDirecotry = path.join(process.cwd(), "data/posts");
   const files = fs.readdirSync(postsDirecotry);
-  return files.map((file) => {
-    const filePath = path.join(postsDirecotry, file);
-    const fileContent = fs.readFileSync(filePath, "utf8");
-    return fileContent;
-  });
+  return files.map(fileToSlug);
+}
+
+function fileToSlug(file: string) {
+  return file.replace(".md", "");
 }
 
 export default async function PostsPage() {
-  const posts = getPosts();
+  const postSlugs = getPostSlugs();
   return (
     <div>
-      {posts.map((post, index) => (
-        <div key={index}>{post}</div>
+      {postSlugs.map((postSlug) => (
+        <Link href={`/p/${postSlug}`} key={postSlug}>
+          {postSlug}
+        </Link>
       ))}
     </div>
   );
