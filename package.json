@@ -35,5 +35,16 @@
     "tailwindcss": "^4.0.5",
     "typescript": "^5.0.0"
   },
-  "resolutions": {}
+  "resolutions": {},
+  "pnpm": {
+    "ignoredBuiltDependencies": [
+      "@tailwindcss/oxide",
+      "sharp",
+      "unrs-resolver"
+    ],
+    "onlyBuiltDependencies": [
+      "@tailwindcss/oxide",
+      "sharp"
+    ]
+  }
 }
