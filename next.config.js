@@ -1,10 +1,8 @@
-/* eslint-env node */
+// @ts-check
+ 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  images: {
-    domains: [],
-  },
+  /* config options here */
 };
 
 module.exports = nextConfig;
