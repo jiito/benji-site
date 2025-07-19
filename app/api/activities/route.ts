@@ -1,5 +1,10 @@
 import { NextResponse } from "next/server";
 
+interface StravaActivity {
+  start_date: string;
+  [key: string]: unknown;
+}
+
 async function refreshToken() {
   const response = await fetch("https://www.strava.com/oauth/token", {
     method: "POST",
@@ -33,7 +38,7 @@ export async function GET() {
 
     let page = 1;
     const perPage = 100; // Maximum allowed by Strava API
-    let allActivities: any[] = [];
+    let allActivities: StravaActivity[] = [];
     let shouldContinue = true;
 
     // Fetch activities until we have all activities from the past year

@@ -1,4 +1,5 @@
 import ReactMarkdown, { Components } from "react-markdown";
+import Image from "next/image";
 
 const components: Components = {
   a: ({ children, href }) => {
@@ -54,7 +55,8 @@ const components: Components = {
     return <code className="bg-gray-100 p-1 rounded-md">{children}</code>;
   },
   img: ({ src, alt }) => {
-    return <img src={src} alt={alt} />;
+    if (!src) return null;
+    return <Image src={src} alt={alt || ""} width={500} height={300} />;
   },
   hr: () => {
     return <hr className="my-4" />;
