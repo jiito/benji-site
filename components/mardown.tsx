@@ -1,5 +1,6 @@
 import ReactMarkdown, { Components } from "react-markdown";
 import Image from "next/image";
+import remarkFrontmatter from "remark-frontmatter";
 
 const components: Components = {
   a: ({ children, href }) => {
@@ -67,5 +68,5 @@ const components: Components = {
 };
 
 export const Markdown = ({ children }: { children: string }) => {
-  return <ReactMarkdown components={components}>{children}</ReactMarkdown>;
+  return <ReactMarkdown components={components} remarkPlugins={[remarkFrontmatter]}>{children}</ReactMarkdown>;
 };
