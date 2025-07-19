@@ -1,10 +1,10 @@
-import { Layout } from "../../components/Layout";
+
 import Image from "next/image";
 import { BannerImage } from "../../components/BannerImage";
 
 export default function AspnProjectPage() {
   return (
-    <Layout>
+    <>
       <BannerImage
         src="/knight-in-the-woods.png"
         height={100}
@@ -20,7 +20,7 @@ export default function AspnProjectPage() {
       <h3>Introduction</h3>
       <p>
         The field of volunteer computing was inspired by the realization of
-        Moore's Law—computers will continue to get faster and smaller while
+        Moore&apos;s Law—computers will continue to get faster and smaller while
         becoming cheaper, exponentially [ And10 ]. On top of this, developers
         turn to cloud service providers (CSPs) to host all types of applications
         from consumer web apps to machine learning models. These hosting
@@ -95,6 +95,6 @@ export default function AspnProjectPage() {
         Full compatible HTTP interface would be necessary for full-fledged
         applications.
       </p>
-    </Layout>
+    </>
   );
 }

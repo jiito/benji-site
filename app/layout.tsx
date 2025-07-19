@@ -1,3 +1,4 @@
+import { Layout } from "@/components/Layout";
 import "../styles/globals.css";
 import { Metadata } from "next";
 import Script from "next/script";
@@ -5,7 +6,7 @@ import Script from "next/script";
 export const metadata: Metadata = {
   title: "jiito",
   openGraph: {
-    title: "Ben Allan-Rahill",
+    title: "benjamin ar",
     images: [
       "https://www.benji.ar/_next/image?url=%2Fblue_spheres.png&w=3840&q=75",
     ],
@@ -27,7 +28,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <Layout>
+
         {children}
+        </Layout>
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
           strategy="afterInteractive"
