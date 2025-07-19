@@ -1,5 +1,5 @@
 
-import ActivityGraph from "../../components/ActivityTracker/ActivityGraph";
+import ActivityGraph from "../../components/activity-tracker/activity-graph";
 
 export default function ActivitiesPage() {
   return (

@@ -1,4 +1,4 @@
-import { Layout } from "@/components/Layout";
+import { Layout } from "@/components/layout";
 import "../styles/globals.css";
 import { Metadata } from "next";
 import Script from "next/script";

@@ -1,5 +1,5 @@
 
-import Project from "../components/Project";
+import Project from "../components/project";
 import { projects } from "../data/projects";
 
 export default function Home() {

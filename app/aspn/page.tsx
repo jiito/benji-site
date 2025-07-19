@@ -1,6 +1,6 @@
 
 import Image from "next/image";
-import { BannerImage } from "../../components/BannerImage";
+import { BannerImage } from "../../components/banner-image";
 
 export default function AspnProjectPage() {
   return (

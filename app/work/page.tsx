@@ -1,6 +1,6 @@
 
 import { projects } from "../../data/projects";
-import Project from "../../components/Project";
+import Project from "../../components/project";
 
 export default function WorkPage() {
   return (

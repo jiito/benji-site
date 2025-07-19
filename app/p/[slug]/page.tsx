@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { Markdown } from "@/components/mardown";
+import { Markdown } from "@/components/markdown";
 
 function getPost(slug: string) {
   const postDirecotry = path.join(process.cwd(), "data/posts");
