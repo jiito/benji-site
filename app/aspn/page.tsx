@@ -1,10 +1,10 @@
-import { Layout } from "../../components/Layout";
+
 import Image from "next/image";
 import { BannerImage } from "../../components/BannerImage";
 
 export default function AspnProjectPage() {
   return (
-    <Layout>
+    <>
       <BannerImage
         src="/knight-in-the-woods.png"
         height={100}
@@ -95,6 +95,6 @@ export default function AspnProjectPage() {
         Full compatible HTTP interface would be necessary for full-fledged
         applications.
       </p>
-    </Layout>
+    </>
   );
 }

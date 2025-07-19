@@ -1,10 +1,9 @@
-import { Layout } from "../components/Layout";
+
 import Project from "../components/Project";
 import { projects } from "../data/projects";
 
 export default function Home() {
   return (
-    <Layout>
       <div className="mt-8">
         <ul className="ml-0 p-0 list-none space-y-8">
           {projects.map((project) => {
@@ -18,6 +17,5 @@ export default function Home() {
           })}
         </ul>
       </div>
-    </Layout>
   );
 }
