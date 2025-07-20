@@ -1,9 +1,9 @@
 "use client";
 
-import { NavBar } from "./nav-bar";
+import { NavBar } from "@/components/nav-bar";
 import Link from "next/link";
 import React from "react";
-import Footer from "./footer";
+import Footer from "@/components/footer";
 import Image from "next/image";
 
 interface LayoutProps {

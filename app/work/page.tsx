@@ -1,12 +1,12 @@
 import { projects } from "@/data/projects";
-import Project from "@/components/project";
+import { ProjectCard } from "@/components/project-card";
 
 export default function WorkPage() {
   return (
       <ul className="ml-0 p-0 list-none">
         {projects.map((project) => (
           <li key={project.name}>
-            <Project project={project} />
+            <ProjectCard project={project} />
           </li>
         ))}
       </ul>

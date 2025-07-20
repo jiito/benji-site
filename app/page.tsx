@@ -1,6 +1,5 @@
-
-import Project from "../components/project";
-import { projects } from "../data/projects";
+import { ProjectCard } from "@/components/project-card";
+import { projects } from "@/data/projects";
 
 export default function Home() {
   return (
@@ -10,7 +9,7 @@ export default function Home() {
             return (
               project.featured && (
                 <li key={project.name}>
-                  <Project project={project} />
+                  <ProjectCard project={project} />
                 </li>
               )
             );

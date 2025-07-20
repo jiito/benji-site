@@ -6,7 +6,7 @@ interface ProjectProps {
   project: ProjectType;
 }
 
-export default function Project({ project }: ProjectProps) {
+export const ProjectCard = ({ project }: ProjectProps) => {
   return (
     <div className="mb-8 bg-[#f3f3f3] p-5 rounded-lg border border-[#e9e9e9]">
       <a
@@ -28,4 +28,4 @@ export default function Project({ project }: ProjectProps) {
       </div>
     </div>
   );
-}
+};
