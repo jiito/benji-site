@@ -1,4 +1,4 @@
-import { Layout } from "@/components/page-layout";
+import { PageLayout } from "@/components/page-layout";
 import "@/styles/globals.css";
 import { Metadata } from "next";
 import Script from "next/script";
@@ -28,10 +28,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Layout>
-
-        {children}
-        </Layout>
+        <PageLayout>
+          {children}
+        </PageLayout>
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
           strategy="afterInteractive"

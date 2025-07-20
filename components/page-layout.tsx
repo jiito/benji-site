@@ -3,14 +3,14 @@
 import { NavBar } from "@/components/nav-bar";
 import Link from "next/link";
 import React from "react";
-import Footer from "@/components/footer";
+import { Footer } from "@/components/footer-component";
 import Image from "next/image";
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
-export const Layout = ({ children }: LayoutProps) => {
+export const PageLayout = ({ children }: LayoutProps) => {
   return (
     <div className="mx-auto p-4 max-w-[750px]">
       <header className="mb-2">

@@ -13,7 +13,7 @@ const SOCIAL_LINKS = [
   },
 ];
 
-const Footer = () => {
+export const Footer = () => {
   return (
     <div className="mt-10 text-gray-500">
       <hr className="w-1/4 mx-auto border-gray-300" />
@@ -37,4 +37,3 @@ const Footer = () => {
   );
 };
 
-export default Footer;
