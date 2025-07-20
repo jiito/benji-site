@@ -1,5 +1,5 @@
 import { Layout } from "@/components/page-layout";
-import "../styles/globals.css";
+import "@/styles/globals.css";
 import { Metadata } from "next";
 import Script from "next/script";
 

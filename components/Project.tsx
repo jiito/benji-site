@@ -1,6 +1,6 @@
 "use client";
 
-import { Project as ProjectType } from "../data/projects";
+import { Project as ProjectType } from "@/data/projects";
 
 interface ProjectProps {
   project: ProjectType;

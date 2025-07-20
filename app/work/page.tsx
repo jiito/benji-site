@@ -1,6 +1,5 @@
-
-import { projects } from "../../data/projects";
-import Project from "../../components/project";
+import { projects } from "@/data/projects";
+import Project from "@/components/project";
 
 export default function WorkPage() {
   return (
