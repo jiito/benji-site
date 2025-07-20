@@ -21,13 +21,6 @@ export const projects: Array<Project> = [
     toolsUsed: ["Python", "Vision Transformers"],
   },
   {
-    name: "AirBnb Infinite Scroll",
-    description: "Infinite scroll clone of AirBnb using plain HTML/CSS/JS",
-    href: "https://scroll-tawny.vercel.app/",
-    featured: false,
-    toolsUsed: ["Unsplash API", "React"],
-  },
-  {
     name: "eddy",
     description:
       "Semantic real-time mind mapping. Best NLP hack at Stanford Treehacks 2023",
