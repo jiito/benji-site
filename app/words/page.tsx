@@ -8,7 +8,7 @@ export default function WordsPage() {
 
 
       </p>
-      <p>some more public writings can be found on my <a href="https://bjar.substack.com">substack</a></p>
+      <p>some more public writings can be found on my <a className="underline" href="https://bjar.substack.com">substack</a></p>
       </>
   );
 }
