@@ -1,6 +1,7 @@
 import { PageLayout } from "@/components/page-layout";
 import "@/styles/globals.css";
 import { Metadata } from "next";
+import { Analytics } from '@vercel/analytics/next';
 import Script from "next/script";
 
 export const metadata: Metadata = {
@@ -28,6 +29,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+
+        <Analytics/>
         <PageLayout>
           {children}
         </PageLayout>
