@@ -23,14 +23,14 @@ export const Footer = () => {
             <Link
               key={s.name}
               href={s.href}
-              className="mr-2 hover:text-gray-700 transition-colors"
+              className="mr-2  hover:text-gray-700 transition-colors"
             >
               {s.name}
             </Link>
           ))}
         </div>
         <p className="mt-2 text-sm">
-          built by benji ar © {new Date().getFullYear()}
+          built by benjamin ar © {new Date().getFullYear()}
         </p>
       </div>
     </div>
